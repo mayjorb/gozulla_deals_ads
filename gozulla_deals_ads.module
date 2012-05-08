@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the gozulla deals_ads feature.
+ */
+
+include_once 'gozulla_deals_ads.features.inc';
