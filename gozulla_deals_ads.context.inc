@@ -65,13 +65,13 @@ function gozulla_deals_ads_context_default_contexts() {
         'views-active_deals-global_deal_block' => array(
           'module' => 'views',
           'delta' => 'active_deals-global_deal_block',
-          'region' => 'content_aside',
+          'region' => 'two_50_first',
           'weight' => '-10',
         ),
-        'views-gozulla_directory-block_1' => array(
+        'views-gozulla_directory-featured_shop' => array(
           'module' => 'views',
-          'delta' => 'gozulla_directory-block_1',
-          'region' => 'content_aside',
+          'delta' => 'gozulla_directory-featured_shop',
+          'region' => 'two_50_second',
           'weight' => '-10',
         ),
       ),
