@@ -74,6 +74,12 @@ function gozulla_deals_ads_context_default_contexts() {
           'region' => 'two_50_second',
           'weight' => '-10',
         ),
+        'views-feed_display-block_1' => array(
+          'module' => 'views',
+          'delta' => 'feed_display-block_1',
+          'region' => 'sidebar_second',
+          'weight' => '-10',
+        ),
       ),
     ),
   );

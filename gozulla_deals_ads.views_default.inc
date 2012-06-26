@@ -123,7 +123,7 @@ function gozulla_deals_ads_views_default_views() {
   $handler->display->display_options['fields']['field_description']['empty_zero'] = 0;
   $handler->display->display_options['fields']['field_description']['hide_alter_empty'] = 1;
   $handler->display->display_options['fields']['field_description']['field_api_classes'] = 0;
-  /* Field: Content: Edit link */
+  /* Field: Node: Edit link */
   $handler->display->display_options['fields']['edit_node']['id'] = 'edit_node';
   $handler->display->display_options['fields']['edit_node']['table'] = 'views_entity_node';
   $handler->display->display_options['fields']['edit_node']['field'] = 'edit_node';
@@ -175,6 +175,14 @@ function gozulla_deals_ads_views_default_views() {
   $handler->display->display_options['filters']['type']['field'] = 'type';
   $handler->display->display_options['filters']['type']['value'] = array(
     'gozulla_deals' => 'gozulla_deals',
+  );
+  /* Filter criterion: Content: Deal active  (field_deal_active_) */
+  $handler->display->display_options['filters']['field_deal_active__value']['id'] = 'field_deal_active__value';
+  $handler->display->display_options['filters']['field_deal_active__value']['table'] = 'field_data_field_deal_active_';
+  $handler->display->display_options['filters']['field_deal_active__value']['field'] = 'field_deal_active__value';
+  $handler->display->display_options['filters']['field_deal_active__value']['relationship'] = 'field_gozulla_location_nid';
+  $handler->display->display_options['filters']['field_deal_active__value']['value'] = array(
+    1 => '1',
   );
 
   /* Display: location display */

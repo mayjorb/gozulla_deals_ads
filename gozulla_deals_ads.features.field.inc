@@ -10,7 +10,7 @@
 function gozulla_deals_ads_field_default_fields() {
   $fields = array();
 
-  // Exported field: 'node-gozulla_deals-field_deal_active_'
+  // Exported field: 'node-gozulla_deals-field_deal_active_'.
   $fields['node-gozulla_deals-field_deal_active_'] = array(
     'field_config' => array(
       'active' => '1',
@@ -24,6 +24,7 @@ function gozulla_deals_ads_field_default_fields() {
           0 => 'value',
         ),
       ),
+      'locked' => '0',
       'module' => 'list',
       'settings' => array(
         'allowed_values' => array(
@@ -79,7 +80,7 @@ function gozulla_deals_ads_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-gozulla_deals-field_deal_photo'
+  // Exported field: 'node-gozulla_deals-field_deal_photo'.
   $fields['node-gozulla_deals-field_deal_photo'] = array(
     'field_config' => array(
       'active' => '1',
@@ -100,6 +101,7 @@ function gozulla_deals_ads_field_default_fields() {
           0 => 'fid',
         ),
       ),
+      'locked' => '0',
       'module' => 'image',
       'settings' => array(
         'default_image' => 0,
@@ -163,7 +165,7 @@ function gozulla_deals_ads_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-gozulla_deals-field_description'
+  // Exported field: 'node-gozulla_deals-field_description'.
   $fields['node-gozulla_deals-field_description'] = array(
     'field_config' => array(
       'active' => '1',
@@ -184,6 +186,7 @@ function gozulla_deals_ads_field_default_fields() {
           0 => 'format',
         ),
       ),
+      'locked' => '0',
       'module' => 'text',
       'settings' => array(
         'profile2_private' => FALSE,
@@ -231,7 +234,7 @@ function gozulla_deals_ads_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-gozulla_deals-field_gozulla_location'
+  // Exported field: 'node-gozulla_deals-field_gozulla_location'.
   $fields['node-gozulla_deals-field_gozulla_location'] = array(
     'field_config' => array(
       'active' => '1',
@@ -252,6 +255,7 @@ function gozulla_deals_ads_field_default_fields() {
           0 => 'nid',
         ),
       ),
+      'locked' => '0',
       'module' => 'node_reference',
       'settings' => array(
         'profile2_private' => FALSE,
