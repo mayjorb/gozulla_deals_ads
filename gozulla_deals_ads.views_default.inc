@@ -99,10 +99,11 @@ function gozulla_deals_ads_views_default_views() {
   $handler->display->display_options['fields']['title']['empty_zero'] = 0;
   $handler->display->display_options['fields']['title']['hide_alter_empty'] = 1;
   $handler->display->display_options['fields']['title']['link_to_node'] = 0;
-  /* Field: Content: Shop Description */
+  /* Field: Deal Details */
   $handler->display->display_options['fields']['field_description']['id'] = 'field_description';
   $handler->display->display_options['fields']['field_description']['table'] = 'field_data_field_description';
   $handler->display->display_options['fields']['field_description']['field'] = 'field_description';
+  $handler->display->display_options['fields']['field_description']['ui_name'] = 'Deal Details';
   $handler->display->display_options['fields']['field_description']['label'] = '';
   $handler->display->display_options['fields']['field_description']['alter']['alter_text'] = 0;
   $handler->display->display_options['fields']['field_description']['alter']['make_link'] = 0;
@@ -180,13 +181,18 @@ function gozulla_deals_ads_views_default_views() {
   $handler->display->display_options['filters']['field_deal_active__value']['id'] = 'field_deal_active__value';
   $handler->display->display_options['filters']['field_deal_active__value']['table'] = 'field_data_field_deal_active_';
   $handler->display->display_options['filters']['field_deal_active__value']['field'] = 'field_deal_active__value';
-  $handler->display->display_options['filters']['field_deal_active__value']['relationship'] = 'field_gozulla_location_nid';
   $handler->display->display_options['filters']['field_deal_active__value']['value'] = array(
     1 => '1',
   );
 
   /* Display: location display */
   $handler = $view->new_display('block', 'location display', 'block');
+  $handler->display->display_options['defaults']['title'] = FALSE;
+  $handler->display->display_options['title'] = 'deals';
+  $handler->display->display_options['defaults']['pager'] = FALSE;
+  $handler->display->display_options['pager']['type'] = 'some';
+  $handler->display->display_options['pager']['options']['items_per_page'] = '0';
+  $handler->display->display_options['pager']['options']['offset'] = '0';
   $handler->display->display_options['defaults']['sorts'] = FALSE;
 
   /* Display: global deal */
@@ -216,6 +222,7 @@ function gozulla_deals_ads_views_default_views() {
     t('[ edit ]'),
     t('All'),
     t('location display'),
+    t('deals'),
     t('global deal'),
     t('Displays random deal on homepage'),
   );
