@@ -25,19 +25,79 @@ function gozulla_deals_ads_context_default_contexts() {
         'node_form' => '1',
       ),
     ),
+    'views' => array(
+      'values' => array(
+        'active_deals' => 'active_deals',
+        'gozulla_directory:deals' => 'gozulla_directory:deals',
+        'gozulla_directory:page_1' => 'gozulla_directory:page_1',
+        'gozulla_directory:page_2' => 'gozulla_directory:page_2',
+        'gozulla_directory:page_3' => 'gozulla_directory:page_3',
+        'gozulla_directory:page_4' => 'gozulla_directory:page_4',
+        'gozulla_directory:page_5' => 'gozulla_directory:page_5',
+        'gozulla_directory:page_6' => 'gozulla_directory:page_6',
+        'gozulla_directory:page_7' => 'gozulla_directory:page_7',
+      ),
+    ),
   );
   $context->reactions = array(
     'block' => array(
       'blocks' => array(
-        'views-active_deals-block' => array(
+        'menu-menu-sport-links' => array(
+          'module' => 'menu',
+          'delta' => 'menu-sport-links',
+          'region' => 'highlighted',
+          'weight' => '-10',
+        ),
+        'gozulla_directory-boat' => array(
+          'module' => 'gozulla_directory',
+          'delta' => 'boat',
+          'region' => 'two_50_first',
+          'weight' => '-10',
+        ),
+        'gozulla_directory-golf' => array(
+          'module' => 'gozulla_directory',
+          'delta' => 'golf',
+          'region' => 'two_50_first',
+          'weight' => '-10',
+        ),
+        'gozulla_directory-climb' => array(
+          'module' => 'gozulla_directory',
+          'delta' => 'climb',
+          'region' => 'two_50_first',
+          'weight' => '-10',
+        ),
+        'gozulla_directory-snow' => array(
+          'module' => 'gozulla_directory',
+          'delta' => 'snow',
+          'region' => 'two_50_first',
+          'weight' => '-10',
+        ),
+        'gozulla_directory-bike' => array(
+          'module' => 'gozulla_directory',
+          'delta' => 'bike',
+          'region' => 'two_50_first',
+          'weight' => '-10',
+        ),
+        'gozulla_directory-skate' => array(
+          'module' => 'gozulla_directory',
+          'delta' => 'skate',
+          'region' => 'two_50_first',
+          'weight' => '-10',
+        ),
+        'gozulla_directory-surf' => array(
+          'module' => 'gozulla_directory',
+          'delta' => 'surf',
+          'region' => 'two_50_first',
+          'weight' => '-10',
+        ),
+        'views-active_deals-block_1' => array(
           'module' => 'views',
-          'delta' => 'active_deals-block',
-          'region' => 'sidebar_second',
+          'delta' => 'active_deals-block_1',
+          'region' => 'two_50_second',
           'weight' => '-10',
         ),
       ),
     ),
-    'breadcrumb' => '<front>',
   );
   $context->condition_mode = 0;
 

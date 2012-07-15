@@ -34,12 +34,6 @@ function gozulla_deals_ads_views_default_views() {
   $handler->display->display_options['pager']['options']['offset'] = '0';
   $handler->display->display_options['style_plugin'] = 'default';
   $handler->display->display_options['row_plugin'] = 'fields';
-  /* Relationship: Content: gozulla location (field_gozulla_location) */
-  $handler->display->display_options['relationships']['field_gozulla_location_nid']['id'] = 'field_gozulla_location_nid';
-  $handler->display->display_options['relationships']['field_gozulla_location_nid']['table'] = 'field_data_field_gozulla_location';
-  $handler->display->display_options['relationships']['field_gozulla_location_nid']['field'] = 'field_gozulla_location_nid';
-  $handler->display->display_options['relationships']['field_gozulla_location_nid']['required'] = 1;
-  $handler->display->display_options['relationships']['field_gozulla_location_nid']['delta'] = '-1';
   /* Field: Content: Deal photo */
   $handler->display->display_options['fields']['field_deal_photo']['id'] = 'field_deal_photo';
   $handler->display->display_options['fields']['field_deal_photo']['table'] = 'field_data_field_deal_photo';
@@ -151,18 +145,6 @@ function gozulla_deals_ads_views_default_views() {
   $handler->display->display_options['sorts']['random']['id'] = 'random';
   $handler->display->display_options['sorts']['random']['table'] = 'views';
   $handler->display->display_options['sorts']['random']['field'] = 'random';
-  /* Contextual filter: Content: gozulla location (field_gozulla_location) */
-  $handler->display->display_options['arguments']['field_gozulla_location_nid']['id'] = 'field_gozulla_location_nid';
-  $handler->display->display_options['arguments']['field_gozulla_location_nid']['table'] = 'field_data_field_gozulla_location';
-  $handler->display->display_options['arguments']['field_gozulla_location_nid']['field'] = 'field_gozulla_location_nid';
-  $handler->display->display_options['arguments']['field_gozulla_location_nid']['default_action'] = 'default';
-  $handler->display->display_options['arguments']['field_gozulla_location_nid']['default_argument_type'] = 'node';
-  $handler->display->display_options['arguments']['field_gozulla_location_nid']['default_argument_skip_url'] = 0;
-  $handler->display->display_options['arguments']['field_gozulla_location_nid']['summary']['number_of_records'] = '0';
-  $handler->display->display_options['arguments']['field_gozulla_location_nid']['summary']['format'] = 'default_summary';
-  $handler->display->display_options['arguments']['field_gozulla_location_nid']['summary_options']['items_per_page'] = '25';
-  $handler->display->display_options['arguments']['field_gozulla_location_nid']['break_phrase'] = 0;
-  $handler->display->display_options['arguments']['field_gozulla_location_nid']['not'] = 0;
   /* Filter criterion: Content: Published */
   $handler->display->display_options['filters']['status']['id'] = 'status';
   $handler->display->display_options['filters']['status']['table'] = 'node';
@@ -209,6 +191,17 @@ function gozulla_deals_ads_views_default_views() {
   $handler->display->display_options['sorts']['random']['table'] = 'views';
   $handler->display->display_options['sorts']['random']['field'] = 'random';
   $handler->display->display_options['defaults']['arguments'] = FALSE;
+
+  /* Display: directory display */
+  $handler = $view->new_display('block', 'directory display', 'block_1');
+  $handler->display->display_options['defaults']['title'] = FALSE;
+  $handler->display->display_options['title'] = 'deals';
+  $handler->display->display_options['display_description'] = 'Displays along with shops on directory pages';
+  $handler->display->display_options['defaults']['pager'] = FALSE;
+  $handler->display->display_options['pager']['type'] = 'some';
+  $handler->display->display_options['pager']['options']['items_per_page'] = '0';
+  $handler->display->display_options['pager']['options']['offset'] = '0';
+  $handler->display->display_options['defaults']['sorts'] = FALSE;
   $translatables['active_deals'] = array(
     t('Master'),
     t('one hot deal'),
@@ -218,13 +211,13 @@ function gozulla_deals_ads_views_default_views() {
     t('Sort by'),
     t('Asc'),
     t('Desc'),
-    t('field_gozulla_location'),
     t('[ edit ]'),
-    t('All'),
     t('location display'),
     t('deals'),
     t('global deal'),
     t('Displays random deal on homepage'),
+    t('directory display'),
+    t('Displays along with shops on directory pages'),
   );
   $export['active_deals'] = $view;
 

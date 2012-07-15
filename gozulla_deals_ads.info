@@ -13,6 +13,7 @@ dependencies[] = field_sql_storage
 dependencies[] = gozulla_directory
 dependencies[] = image
 dependencies[] = list
+dependencies[] = menu
 dependencies[] = node
 dependencies[] = node_reference
 dependencies[] = nodereference_url
