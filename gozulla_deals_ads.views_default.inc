@@ -196,6 +196,7 @@ function gozulla_deals_ads_views_default_views() {
   $handler = $view->new_display('block', 'directory display', 'block_1');
   $handler->display->display_options['defaults']['title'] = FALSE;
   $handler->display->display_options['title'] = 'deals';
+  $handler->display->display_options['enabled'] = FALSE;
   $handler->display->display_options['display_description'] = 'Displays along with shops on directory pages';
   $handler->display->display_options['defaults']['pager'] = FALSE;
   $handler->display->display_options['pager']['type'] = 'some';
