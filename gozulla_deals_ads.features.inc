@@ -30,6 +30,14 @@ function gozulla_deals_ads_views_api() {
  */
 function gozulla_deals_ads_node_info() {
   $items = array(
+    'gozulla_ad' => array(
+      'name' => t('gozulla ad'),
+      'base' => 'node_content',
+      'description' => t('Use for adding ads'),
+      'has_title' => '1',
+      'title_label' => t('Title'),
+      'help' => '',
+    ),
     'gozulla_deals' => array(
       'name' => t('gozulla deals'),
       'base' => 'node_content',
