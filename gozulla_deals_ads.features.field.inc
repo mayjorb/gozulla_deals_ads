@@ -10,14 +10,14 @@
 function gozulla_deals_ads_field_default_fields() {
   $fields = array();
 
-  // Exported field: 'node-gozulla_ad-field_deal_image'.
-  $fields['node-gozulla_ad-field_deal_image'] = array(
+  // Exported field: 'node-gozulla_ad-field_ad_image'.
+  $fields['node-gozulla_ad-field_ad_image'] = array(
     'field_config' => array(
       'active' => '1',
       'cardinality' => '1',
       'deleted' => '0',
       'entity_types' => array(),
-      'field_name' => 'field_deal_image',
+      'field_name' => 'field_ad_image',
       'foreign keys' => array(
         'fid' => array(
           'columns' => array(
@@ -46,7 +46,23 @@ function gozulla_deals_ads_field_default_fields() {
       'deleted' => '0',
       'description' => '',
       'display' => array(
+        'colorbox' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
         'default' => array(
+          'label' => 'hidden',
+          'module' => 'image',
+          'settings' => array(
+            'image_link' => '',
+            'image_style' => '',
+          ),
+          'type' => 'image',
+          'weight' => '3',
+        ),
+        'full' => array(
           'label' => 'hidden',
           'module' => 'image',
           'settings' => array(
@@ -57,15 +73,19 @@ function gozulla_deals_ads_field_default_fields() {
           'weight' => '0',
         ),
         'teaser' => array(
-          'label' => 'above',
-          'settings' => array(),
-          'type' => 'hidden',
-          'weight' => 0,
+          'label' => 'hidden',
+          'module' => 'image',
+          'settings' => array(
+            'image_link' => '',
+            'image_style' => 'gozulla_ad',
+          ),
+          'type' => 'image',
+          'weight' => '0',
         ),
       ),
       'entity_type' => 'node',
-      'field_name' => 'field_deal_image',
-      'label' => 'deal image',
+      'field_name' => 'field_ad_image',
+      'label' => 'ad image',
       'required' => 0,
       'settings' => array(
         'alt_field' => 1,
@@ -82,11 +102,11 @@ function gozulla_deals_ads_field_default_fields() {
         'active' => 1,
         'module' => 'image',
         'settings' => array(
-          'preview_image_style' => 'detail_thumbnail',
+          'preview_image_style' => 'thumbnail',
           'progress_indicator' => 'throbber',
         ),
         'type' => 'image_image',
-        'weight' => '31',
+        'weight' => '1',
       ),
     ),
   );
@@ -128,7 +148,19 @@ function gozulla_deals_ads_field_default_fields() {
       'deleted' => '0',
       'description' => 'enter the full URL that ad should link to, i.e. http://yourshop.com',
       'display' => array(
+        'colorbox' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
         'default' => array(
+          'label' => 'hidden',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => '1',
+        ),
+        'full' => array(
           'label' => 'hidden',
           'settings' => array(),
           'type' => 'hidden',
@@ -138,7 +170,7 @@ function gozulla_deals_ads_field_default_fields() {
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => 0,
+          'weight' => '0',
         ),
       ),
       'entity_type' => 'node',
@@ -169,7 +201,7 @@ function gozulla_deals_ads_field_default_fields() {
         'module' => 'link',
         'settings' => array(),
         'type' => 'link_field',
-        'weight' => '32',
+        'weight' => '3',
       ),
     ),
   );
@@ -215,7 +247,19 @@ function gozulla_deals_ads_field_default_fields() {
       'deleted' => '0',
       'description' => 'Select the sport or sports that the ad relates to.',
       'display' => array(
+        'colorbox' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
         'default' => array(
+          'label' => 'hidden',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => '2',
+        ),
+        'full' => array(
           'label' => 'hidden',
           'settings' => array(),
           'type' => 'hidden',
@@ -225,7 +269,7 @@ function gozulla_deals_ads_field_default_fields() {
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => 0,
+          'weight' => '0',
         ),
       ),
       'entity_type' => 'node',
@@ -240,7 +284,7 @@ function gozulla_deals_ads_field_default_fields() {
         'module' => 'options',
         'settings' => array(),
         'type' => 'options_select',
-        'weight' => '34',
+        'weight' => '4',
       ),
     ),
   );
@@ -282,6 +326,12 @@ function gozulla_deals_ads_field_default_fields() {
       'deleted' => '0',
       'description' => 'Un-check to deactivate deal',
       'display' => array(
+        'colorbox' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
         'default' => array(
           'label' => 'above',
           'module' => 'list',
@@ -351,6 +401,12 @@ function gozulla_deals_ads_field_default_fields() {
       'deleted' => '0',
       'description' => 'Upload a photo for the deal.',
       'display' => array(
+        'colorbox' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
         'default' => array(
           'label' => 'above',
           'module' => 'colorbox',
@@ -435,6 +491,12 @@ function gozulla_deals_ads_field_default_fields() {
       'deleted' => '0',
       'description' => 'Enter a brief description of the deal.',
       'display' => array(
+        'colorbox' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
         'default' => array(
           'label' => 'above',
           'module' => 'text',
@@ -495,11 +557,16 @@ function gozulla_deals_ads_field_default_fields() {
       'settings' => array(
         'profile2_private' => FALSE,
         'referenceable_types' => array(
+          'deal' => 0,
+          'feed' => 0,
+          'feed_item' => 0,
+          'gozulla_ad' => 0,
           'gozulla_deals' => 0,
           'gozulla_location' => 'gozulla_location',
           'home_slideshow' => 0,
           'page' => 0,
-          'social_media_buttons' => 0,
+          'social_network' => 0,
+          'sport_feed_item' => 0,
           'webform' => 0,
         ),
         'view' => array(
@@ -517,6 +584,12 @@ function gozulla_deals_ads_field_default_fields() {
       'deleted' => '0',
       'description' => '',
       'display' => array(
+        'colorbox' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
         'default' => array(
           'label' => 'inline',
           'settings' => array(),
@@ -568,7 +641,7 @@ function gozulla_deals_ads_field_default_fields() {
   t('Sports');
   t('Un-check to deactivate deal');
   t('Upload a photo for the deal.');
-  t('deal image');
+  t('ad image');
   t('deal link');
   t('enter the full URL that ad should link to, i.e. http://yourshop.com');
   t('gozulla location');

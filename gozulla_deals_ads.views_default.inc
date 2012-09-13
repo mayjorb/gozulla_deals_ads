@@ -10,7 +10,7 @@
 function gozulla_deals_ads_views_default_views() {
   $export = array();
 
-  $view = new view;
+  $view = new view();
   $view->name = 'active_deals';
   $view->description = 'Dispalys a deal on location page and randomly on the homepage';
   $view->tag = 'default';
@@ -24,6 +24,7 @@ function gozulla_deals_ads_views_default_views() {
   $handler = $view->new_display('default', 'Master', 'default');
   $handler->display->display_options['title'] = 'one hot deal';
   $handler->display->display_options['css_class'] = 'float-right';
+  $handler->display->display_options['use_more_always'] = FALSE;
   $handler->display->display_options['access']['type'] = 'perm';
   $handler->display->display_options['cache']['type'] = 'none';
   $handler->display->display_options['query']['type'] = 'views_query';
@@ -39,24 +40,7 @@ function gozulla_deals_ads_views_default_views() {
   $handler->display->display_options['fields']['field_deal_photo']['table'] = 'field_data_field_deal_photo';
   $handler->display->display_options['fields']['field_deal_photo']['field'] = 'field_deal_photo';
   $handler->display->display_options['fields']['field_deal_photo']['label'] = '';
-  $handler->display->display_options['fields']['field_deal_photo']['alter']['alter_text'] = 0;
-  $handler->display->display_options['fields']['field_deal_photo']['alter']['make_link'] = 0;
-  $handler->display->display_options['fields']['field_deal_photo']['alter']['absolute'] = 0;
-  $handler->display->display_options['fields']['field_deal_photo']['alter']['external'] = 0;
-  $handler->display->display_options['fields']['field_deal_photo']['alter']['replace_spaces'] = 0;
-  $handler->display->display_options['fields']['field_deal_photo']['alter']['trim_whitespace'] = 0;
-  $handler->display->display_options['fields']['field_deal_photo']['alter']['nl2br'] = 0;
-  $handler->display->display_options['fields']['field_deal_photo']['alter']['word_boundary'] = 1;
-  $handler->display->display_options['fields']['field_deal_photo']['alter']['ellipsis'] = 1;
-  $handler->display->display_options['fields']['field_deal_photo']['alter']['more_link'] = 0;
-  $handler->display->display_options['fields']['field_deal_photo']['alter']['strip_tags'] = 0;
-  $handler->display->display_options['fields']['field_deal_photo']['alter']['trim'] = 0;
-  $handler->display->display_options['fields']['field_deal_photo']['alter']['html'] = 0;
   $handler->display->display_options['fields']['field_deal_photo']['element_label_colon'] = FALSE;
-  $handler->display->display_options['fields']['field_deal_photo']['element_default_classes'] = 1;
-  $handler->display->display_options['fields']['field_deal_photo']['hide_empty'] = 0;
-  $handler->display->display_options['fields']['field_deal_photo']['empty_zero'] = 0;
-  $handler->display->display_options['fields']['field_deal_photo']['hide_alter_empty'] = 1;
   $handler->display->display_options['fields']['field_deal_photo']['click_sort_column'] = 'fid';
   $handler->display->display_options['fields']['field_deal_photo']['type'] = 'colorbox';
   $handler->display->display_options['fields']['field_deal_photo']['settings'] = array(
@@ -67,79 +51,30 @@ function gozulla_deals_ads_views_default_views() {
     'colorbox_caption' => 'auto',
     'colorbox_caption_custom' => '',
   );
-  $handler->display->display_options['fields']['field_deal_photo']['field_api_classes'] = 0;
   /* Field: Content: Title */
   $handler->display->display_options['fields']['title']['id'] = 'title';
   $handler->display->display_options['fields']['title']['table'] = 'node';
   $handler->display->display_options['fields']['title']['field'] = 'title';
   $handler->display->display_options['fields']['title']['label'] = '';
-  $handler->display->display_options['fields']['title']['alter']['alter_text'] = 0;
-  $handler->display->display_options['fields']['title']['alter']['make_link'] = 0;
-  $handler->display->display_options['fields']['title']['alter']['absolute'] = 0;
-  $handler->display->display_options['fields']['title']['alter']['external'] = 0;
-  $handler->display->display_options['fields']['title']['alter']['replace_spaces'] = 0;
-  $handler->display->display_options['fields']['title']['alter']['trim_whitespace'] = 0;
-  $handler->display->display_options['fields']['title']['alter']['nl2br'] = 0;
-  $handler->display->display_options['fields']['title']['alter']['word_boundary'] = 0;
-  $handler->display->display_options['fields']['title']['alter']['ellipsis'] = 0;
-  $handler->display->display_options['fields']['title']['alter']['more_link'] = 0;
-  $handler->display->display_options['fields']['title']['alter']['strip_tags'] = 0;
-  $handler->display->display_options['fields']['title']['alter']['trim'] = 0;
-  $handler->display->display_options['fields']['title']['alter']['html'] = 0;
+  $handler->display->display_options['fields']['title']['alter']['word_boundary'] = FALSE;
+  $handler->display->display_options['fields']['title']['alter']['ellipsis'] = FALSE;
   $handler->display->display_options['fields']['title']['element_type'] = 'h3';
   $handler->display->display_options['fields']['title']['element_label_colon'] = FALSE;
-  $handler->display->display_options['fields']['title']['element_default_classes'] = 1;
-  $handler->display->display_options['fields']['title']['hide_empty'] = 0;
-  $handler->display->display_options['fields']['title']['empty_zero'] = 0;
-  $handler->display->display_options['fields']['title']['hide_alter_empty'] = 1;
-  $handler->display->display_options['fields']['title']['link_to_node'] = 0;
+  $handler->display->display_options['fields']['title']['link_to_node'] = FALSE;
   /* Field: Deal Details */
   $handler->display->display_options['fields']['field_description']['id'] = 'field_description';
   $handler->display->display_options['fields']['field_description']['table'] = 'field_data_field_description';
   $handler->display->display_options['fields']['field_description']['field'] = 'field_description';
   $handler->display->display_options['fields']['field_description']['ui_name'] = 'Deal Details';
   $handler->display->display_options['fields']['field_description']['label'] = '';
-  $handler->display->display_options['fields']['field_description']['alter']['alter_text'] = 0;
-  $handler->display->display_options['fields']['field_description']['alter']['make_link'] = 0;
-  $handler->display->display_options['fields']['field_description']['alter']['absolute'] = 0;
-  $handler->display->display_options['fields']['field_description']['alter']['external'] = 0;
-  $handler->display->display_options['fields']['field_description']['alter']['replace_spaces'] = 0;
-  $handler->display->display_options['fields']['field_description']['alter']['trim_whitespace'] = 0;
-  $handler->display->display_options['fields']['field_description']['alter']['nl2br'] = 1;
-  $handler->display->display_options['fields']['field_description']['alter']['word_boundary'] = 1;
-  $handler->display->display_options['fields']['field_description']['alter']['ellipsis'] = 1;
-  $handler->display->display_options['fields']['field_description']['alter']['more_link'] = 0;
-  $handler->display->display_options['fields']['field_description']['alter']['strip_tags'] = 0;
-  $handler->display->display_options['fields']['field_description']['alter']['trim'] = 0;
-  $handler->display->display_options['fields']['field_description']['alter']['html'] = 0;
+  $handler->display->display_options['fields']['field_description']['alter']['nl2br'] = TRUE;
   $handler->display->display_options['fields']['field_description']['element_label_colon'] = FALSE;
-  $handler->display->display_options['fields']['field_description']['element_default_classes'] = 1;
-  $handler->display->display_options['fields']['field_description']['hide_empty'] = 0;
-  $handler->display->display_options['fields']['field_description']['empty_zero'] = 0;
-  $handler->display->display_options['fields']['field_description']['hide_alter_empty'] = 1;
-  $handler->display->display_options['fields']['field_description']['field_api_classes'] = 0;
-  /* Field: Node: Edit link */
+  /* Field: Content: Edit link */
   $handler->display->display_options['fields']['edit_node']['id'] = 'edit_node';
   $handler->display->display_options['fields']['edit_node']['table'] = 'views_entity_node';
   $handler->display->display_options['fields']['edit_node']['field'] = 'edit_node';
   $handler->display->display_options['fields']['edit_node']['label'] = '';
-  $handler->display->display_options['fields']['edit_node']['alter']['alter_text'] = 0;
-  $handler->display->display_options['fields']['edit_node']['alter']['make_link'] = 0;
-  $handler->display->display_options['fields']['edit_node']['alter']['absolute'] = 0;
-  $handler->display->display_options['fields']['edit_node']['alter']['replace_spaces'] = 0;
-  $handler->display->display_options['fields']['edit_node']['alter']['trim_whitespace'] = 0;
-  $handler->display->display_options['fields']['edit_node']['alter']['nl2br'] = 0;
-  $handler->display->display_options['fields']['edit_node']['alter']['word_boundary'] = 1;
-  $handler->display->display_options['fields']['edit_node']['alter']['ellipsis'] = 1;
-  $handler->display->display_options['fields']['edit_node']['alter']['more_link'] = 0;
-  $handler->display->display_options['fields']['edit_node']['alter']['strip_tags'] = 0;
-  $handler->display->display_options['fields']['edit_node']['alter']['trim'] = 0;
-  $handler->display->display_options['fields']['edit_node']['alter']['html'] = 0;
   $handler->display->display_options['fields']['edit_node']['element_label_colon'] = FALSE;
-  $handler->display->display_options['fields']['edit_node']['element_default_classes'] = 1;
-  $handler->display->display_options['fields']['edit_node']['hide_empty'] = 0;
-  $handler->display->display_options['fields']['edit_node']['empty_zero'] = 0;
-  $handler->display->display_options['fields']['edit_node']['hide_alter_empty'] = 1;
   $handler->display->display_options['fields']['edit_node']['text'] = '[ edit ]';
   /* Sort criterion: Global: Random */
   $handler->display->display_options['sorts']['random']['id'] = 'random';
@@ -171,6 +106,7 @@ function gozulla_deals_ads_views_default_views() {
   $handler = $view->new_display('block', 'location display', 'block');
   $handler->display->display_options['defaults']['title'] = FALSE;
   $handler->display->display_options['title'] = 'deals';
+  $handler->display->display_options['defaults']['hide_admin_links'] = FALSE;
   $handler->display->display_options['defaults']['pager'] = FALSE;
   $handler->display->display_options['pager']['type'] = 'some';
   $handler->display->display_options['pager']['options']['items_per_page'] = '0';
@@ -180,6 +116,7 @@ function gozulla_deals_ads_views_default_views() {
   /* Display: global deal */
   $handler = $view->new_display('block', 'global deal', 'global_deal_block');
   $handler->display->display_options['display_description'] = 'Displays random deal on homepage';
+  $handler->display->display_options['defaults']['hide_admin_links'] = FALSE;
   $handler->display->display_options['defaults']['pager'] = FALSE;
   $handler->display->display_options['pager']['type'] = 'some';
   $handler->display->display_options['pager']['options']['items_per_page'] = '1';
@@ -198,6 +135,7 @@ function gozulla_deals_ads_views_default_views() {
   $handler->display->display_options['title'] = 'deals';
   $handler->display->display_options['enabled'] = FALSE;
   $handler->display->display_options['display_description'] = 'Displays along with shops on directory pages';
+  $handler->display->display_options['defaults']['hide_admin_links'] = FALSE;
   $handler->display->display_options['defaults']['pager'] = FALSE;
   $handler->display->display_options['pager']['type'] = 'some';
   $handler->display->display_options['pager']['options']['items_per_page'] = '0';
@@ -222,7 +160,7 @@ function gozulla_deals_ads_views_default_views() {
   );
   $export['active_deals'] = $view;
 
-  $view = new view;
+  $view = new view();
   $view->name = 'gozulla_ads';
   $view->description = 'for displaying ads in sidebar';
   $view->tag = 'default';
@@ -234,77 +172,42 @@ function gozulla_deals_ads_views_default_views() {
 
   /* Display: Master */
   $handler = $view->new_display('default', 'Master', 'default');
+  $handler->display->display_options['title'] = 'community sponsors';
+  $handler->display->display_options['css_class'] = 'gozulla-ad';
+  $handler->display->display_options['use_more_always'] = FALSE;
   $handler->display->display_options['access']['type'] = 'perm';
   $handler->display->display_options['cache']['type'] = 'none';
   $handler->display->display_options['query']['type'] = 'views_query';
   $handler->display->display_options['query']['options']['query_comment'] = FALSE;
   $handler->display->display_options['exposed_form']['type'] = 'basic';
   $handler->display->display_options['pager']['type'] = 'some';
-  $handler->display->display_options['pager']['options']['items_per_page'] = '1';
+  $handler->display->display_options['pager']['options']['items_per_page'] = '0';
   $handler->display->display_options['pager']['options']['offset'] = '0';
   $handler->display->display_options['style_plugin'] = 'default';
   $handler->display->display_options['row_plugin'] = 'fields';
+  /* Field: Content: ad image */
+  $handler->display->display_options['fields']['field_ad_image']['id'] = 'field_ad_image';
+  $handler->display->display_options['fields']['field_ad_image']['table'] = 'field_data_field_ad_image';
+  $handler->display->display_options['fields']['field_ad_image']['field'] = 'field_ad_image';
+  $handler->display->display_options['fields']['field_ad_image']['label'] = '';
+  $handler->display->display_options['fields']['field_ad_image']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_ad_image']['click_sort_column'] = 'fid';
+  $handler->display->display_options['fields']['field_ad_image']['settings'] = array(
+    'image_style' => 'gozulla_ad',
+    'image_link' => '',
+  );
   /* Field: Content: deal link */
   $handler->display->display_options['fields']['field_deal_link']['id'] = 'field_deal_link';
   $handler->display->display_options['fields']['field_deal_link']['table'] = 'field_data_field_deal_link';
   $handler->display->display_options['fields']['field_deal_link']['field'] = 'field_deal_link';
   $handler->display->display_options['fields']['field_deal_link']['label'] = '';
   $handler->display->display_options['fields']['field_deal_link']['exclude'] = TRUE;
-  $handler->display->display_options['fields']['field_deal_link']['alter']['alter_text'] = 0;
-  $handler->display->display_options['fields']['field_deal_link']['alter']['make_link'] = 0;
-  $handler->display->display_options['fields']['field_deal_link']['alter']['absolute'] = 0;
-  $handler->display->display_options['fields']['field_deal_link']['alter']['external'] = 0;
-  $handler->display->display_options['fields']['field_deal_link']['alter']['replace_spaces'] = 0;
-  $handler->display->display_options['fields']['field_deal_link']['alter']['trim_whitespace'] = 0;
-  $handler->display->display_options['fields']['field_deal_link']['alter']['nl2br'] = 0;
-  $handler->display->display_options['fields']['field_deal_link']['alter']['word_boundary'] = 1;
-  $handler->display->display_options['fields']['field_deal_link']['alter']['ellipsis'] = 1;
-  $handler->display->display_options['fields']['field_deal_link']['alter']['more_link'] = 0;
-  $handler->display->display_options['fields']['field_deal_link']['alter']['strip_tags'] = 0;
-  $handler->display->display_options['fields']['field_deal_link']['alter']['trim'] = 0;
-  $handler->display->display_options['fields']['field_deal_link']['alter']['html'] = 0;
   $handler->display->display_options['fields']['field_deal_link']['element_label_colon'] = FALSE;
-  $handler->display->display_options['fields']['field_deal_link']['element_default_classes'] = 1;
-  $handler->display->display_options['fields']['field_deal_link']['hide_empty'] = 0;
-  $handler->display->display_options['fields']['field_deal_link']['empty_zero'] = 0;
-  $handler->display->display_options['fields']['field_deal_link']['hide_alter_empty'] = 1;
   $handler->display->display_options['fields']['field_deal_link']['click_sort_column'] = 'url';
-  $handler->display->display_options['fields']['field_deal_link']['field_api_classes'] = 0;
-  /* Field: Content: deal image */
-  $handler->display->display_options['fields']['field_deal_image']['id'] = 'field_deal_image';
-  $handler->display->display_options['fields']['field_deal_image']['table'] = 'field_data_field_deal_image';
-  $handler->display->display_options['fields']['field_deal_image']['field'] = 'field_deal_image';
-  $handler->display->display_options['fields']['field_deal_image']['label'] = '';
-  $handler->display->display_options['fields']['field_deal_image']['alter']['alter_text'] = 0;
-  $handler->display->display_options['fields']['field_deal_image']['alter']['make_link'] = 1;
-  $handler->display->display_options['fields']['field_deal_image']['alter']['path'] = '[field_deal_link]';
-  $handler->display->display_options['fields']['field_deal_image']['alter']['absolute'] = 0;
-  $handler->display->display_options['fields']['field_deal_image']['alter']['external'] = 0;
-  $handler->display->display_options['fields']['field_deal_image']['alter']['replace_spaces'] = 0;
-  $handler->display->display_options['fields']['field_deal_image']['alter']['trim_whitespace'] = 0;
-  $handler->display->display_options['fields']['field_deal_image']['alter']['nl2br'] = 0;
-  $handler->display->display_options['fields']['field_deal_image']['alter']['word_boundary'] = 1;
-  $handler->display->display_options['fields']['field_deal_image']['alter']['ellipsis'] = 1;
-  $handler->display->display_options['fields']['field_deal_image']['alter']['more_link'] = 0;
-  $handler->display->display_options['fields']['field_deal_image']['alter']['strip_tags'] = 0;
-  $handler->display->display_options['fields']['field_deal_image']['alter']['trim'] = 0;
-  $handler->display->display_options['fields']['field_deal_image']['alter']['html'] = 0;
-  $handler->display->display_options['fields']['field_deal_image']['element_label_colon'] = FALSE;
-  $handler->display->display_options['fields']['field_deal_image']['element_default_classes'] = 1;
-  $handler->display->display_options['fields']['field_deal_image']['hide_empty'] = 0;
-  $handler->display->display_options['fields']['field_deal_image']['empty_zero'] = 0;
-  $handler->display->display_options['fields']['field_deal_image']['hide_alter_empty'] = 1;
-  $handler->display->display_options['fields']['field_deal_image']['click_sort_column'] = 'fid';
-  $handler->display->display_options['fields']['field_deal_image']['settings'] = array(
-    'image_style' => 'gozulla_ad',
-    'image_link' => '',
-  );
-  $handler->display->display_options['fields']['field_deal_image']['field_api_classes'] = 0;
   /* Sort criterion: Content: Post date */
   $handler->display->display_options['sorts']['created']['id'] = 'created';
   $handler->display->display_options['sorts']['created']['table'] = 'node';
   $handler->display->display_options['sorts']['created']['field'] = 'created';
-  $handler->display->display_options['sorts']['created']['order'] = 'DESC';
   /* Filter criterion: Content: Published */
   $handler->display->display_options['filters']['status']['id'] = 'status';
   $handler->display->display_options['filters']['status']['table'] = 'node';
@@ -321,8 +224,10 @@ function gozulla_deals_ads_views_default_views() {
   );
 
   /* Display: help-boat */
-  $handler = $view->new_display('block', 'help-boat', 'block');
+  $handler = $view->new_display('block', 'help-boat', 'help_boat');
   $handler->display->display_options['display_description'] = 'displays boat help ad';
+  $handler->display->display_options['defaults']['hide_admin_links'] = FALSE;
+  $handler->display->display_options['defaults']['filter_groups'] = FALSE;
   $handler->display->display_options['defaults']['filters'] = FALSE;
   /* Filter criterion: Content: Published */
   $handler->display->display_options['filters']['status']['id'] = 'status';
@@ -345,13 +250,14 @@ function gozulla_deals_ads_views_default_views() {
   $handler->display->display_options['filters']['tid']['value'] = array(
     15 => '15',
   );
-  $handler->display->display_options['filters']['tid']['reduce_duplicates'] = 0;
   $handler->display->display_options['filters']['tid']['type'] = 'select';
   $handler->display->display_options['filters']['tid']['vocabulary'] = 'gozulla_sport';
 
   /* Display: help-bike */
-  $handler = $view->new_display('block', 'help-bike', 'block_1');
+  $handler = $view->new_display('block', 'help-bike', 'help_bike');
   $handler->display->display_options['display_description'] = 'displays bike help ad';
+  $handler->display->display_options['defaults']['hide_admin_links'] = FALSE;
+  $handler->display->display_options['defaults']['filter_groups'] = FALSE;
   $handler->display->display_options['defaults']['filters'] = FALSE;
   /* Filter criterion: Content: Published */
   $handler->display->display_options['filters']['status']['id'] = 'status';
@@ -374,13 +280,14 @@ function gozulla_deals_ads_views_default_views() {
   $handler->display->display_options['filters']['tid']['value'] = array(
     14 => '14',
   );
-  $handler->display->display_options['filters']['tid']['reduce_duplicates'] = 0;
   $handler->display->display_options['filters']['tid']['type'] = 'select';
   $handler->display->display_options['filters']['tid']['vocabulary'] = 'gozulla_sport';
 
   /* Display: help-climb */
-  $handler = $view->new_display('block', 'help-climb', 'block_2');
+  $handler = $view->new_display('block', 'help-climb', 'help_climb');
   $handler->display->display_options['display_description'] = 'displays climb help ad';
+  $handler->display->display_options['defaults']['hide_admin_links'] = FALSE;
+  $handler->display->display_options['defaults']['filter_groups'] = FALSE;
   $handler->display->display_options['defaults']['filters'] = FALSE;
   /* Filter criterion: Content: Published */
   $handler->display->display_options['filters']['status']['id'] = 'status';
@@ -403,13 +310,14 @@ function gozulla_deals_ads_views_default_views() {
   $handler->display->display_options['filters']['tid']['value'] = array(
     13 => '13',
   );
-  $handler->display->display_options['filters']['tid']['reduce_duplicates'] = 0;
   $handler->display->display_options['filters']['tid']['type'] = 'select';
   $handler->display->display_options['filters']['tid']['vocabulary'] = 'gozulla_sport';
 
   /* Display: help-golf */
-  $handler = $view->new_display('block', 'help-golf', 'block_3');
+  $handler = $view->new_display('block', 'help-golf', 'help_golf');
   $handler->display->display_options['display_description'] = 'displays golf help ad';
+  $handler->display->display_options['defaults']['hide_admin_links'] = FALSE;
+  $handler->display->display_options['defaults']['filter_groups'] = FALSE;
   $handler->display->display_options['defaults']['filters'] = FALSE;
   /* Filter criterion: Content: Published */
   $handler->display->display_options['filters']['status']['id'] = 'status';
@@ -432,13 +340,14 @@ function gozulla_deals_ads_views_default_views() {
   $handler->display->display_options['filters']['tid']['value'] = array(
     20 => '20',
   );
-  $handler->display->display_options['filters']['tid']['reduce_duplicates'] = 0;
   $handler->display->display_options['filters']['tid']['type'] = 'select';
   $handler->display->display_options['filters']['tid']['vocabulary'] = 'gozulla_sport';
 
   /* Display: help-skate */
-  $handler = $view->new_display('block', 'help-skate', 'block_4');
+  $handler = $view->new_display('block', 'help-skate', 'help_skate');
   $handler->display->display_options['display_description'] = 'displays skate help ad';
+  $handler->display->display_options['defaults']['hide_admin_links'] = FALSE;
+  $handler->display->display_options['defaults']['filter_groups'] = FALSE;
   $handler->display->display_options['defaults']['filters'] = FALSE;
   /* Filter criterion: Content: Published */
   $handler->display->display_options['filters']['status']['id'] = 'status';
@@ -461,13 +370,14 @@ function gozulla_deals_ads_views_default_views() {
   $handler->display->display_options['filters']['tid']['value'] = array(
     18 => '18',
   );
-  $handler->display->display_options['filters']['tid']['reduce_duplicates'] = 0;
   $handler->display->display_options['filters']['tid']['type'] = 'select';
   $handler->display->display_options['filters']['tid']['vocabulary'] = 'gozulla_sport';
 
   /* Display: help-snow */
-  $handler = $view->new_display('block', 'help-snow', 'block_5');
+  $handler = $view->new_display('block', 'help-snow', 'help_snow');
   $handler->display->display_options['display_description'] = 'displays snow help ad';
+  $handler->display->display_options['defaults']['hide_admin_links'] = FALSE;
+  $handler->display->display_options['defaults']['filter_groups'] = FALSE;
   $handler->display->display_options['defaults']['filters'] = FALSE;
   /* Filter criterion: Content: Published */
   $handler->display->display_options['filters']['status']['id'] = 'status';
@@ -490,13 +400,14 @@ function gozulla_deals_ads_views_default_views() {
   $handler->display->display_options['filters']['tid']['value'] = array(
     19 => '19',
   );
-  $handler->display->display_options['filters']['tid']['reduce_duplicates'] = 0;
   $handler->display->display_options['filters']['tid']['type'] = 'select';
   $handler->display->display_options['filters']['tid']['vocabulary'] = 'gozulla_sport';
 
   /* Display: help-surf */
-  $handler = $view->new_display('block', 'help-surf', 'block_6');
+  $handler = $view->new_display('block', 'help-surf', 'help_surf');
   $handler->display->display_options['display_description'] = 'displays surf help ad';
+  $handler->display->display_options['defaults']['hide_admin_links'] = FALSE;
+  $handler->display->display_options['defaults']['filter_groups'] = FALSE;
   $handler->display->display_options['defaults']['filters'] = FALSE;
   /* Filter criterion: Content: Published */
   $handler->display->display_options['filters']['status']['id'] = 'status';
@@ -519,18 +430,17 @@ function gozulla_deals_ads_views_default_views() {
   $handler->display->display_options['filters']['tid']['value'] = array(
     12 => '12',
   );
-  $handler->display->display_options['filters']['tid']['reduce_duplicates'] = 0;
   $handler->display->display_options['filters']['tid']['type'] = 'select';
   $handler->display->display_options['filters']['tid']['vocabulary'] = 'gozulla_sport';
   $translatables['gozulla_ads'] = array(
     t('Master'),
+    t('community sponsors'),
     t('more'),
     t('Apply'),
     t('Reset'),
     t('Sort by'),
     t('Asc'),
     t('Desc'),
-    t('[field_deal_link]'),
     t('help-boat'),
     t('displays boat help ad'),
     t('help-bike'),
