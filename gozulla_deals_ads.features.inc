@@ -35,15 +35,7 @@ function gozulla_deals_ads_node_info() {
       'base' => 'node_content',
       'description' => t('Use for adding ads'),
       'has_title' => '1',
-      'title_label' => t('Title'),
-      'help' => '',
-    ),
-    'gozulla_deals' => array(
-      'name' => t('gozulla deals'),
-      'base' => 'node_content',
-      'description' => t('Use for adding "deals" for a shop'),
-      'has_title' => '1',
-      'title_label' => t('Name of deal'),
+      'title_label' => t('Ad title'),
       'help' => '',
     ),
   );

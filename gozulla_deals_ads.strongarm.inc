@@ -87,14 +87,17 @@ function gozulla_deals_ads_strongarm() {
       'token' => array(
         'custom_settings' => FALSE,
       ),
+      'colorbox' => array(
+        'custom_settings' => TRUE,
+      ),
     ),
     'extra_fields' => array(
       'form' => array(
         'title' => array(
-          'weight' => '-5',
+          'weight' => '0',
         ),
         'path' => array(
-          'weight' => '30',
+          'weight' => '5',
         ),
       ),
       'display' => array(),
@@ -138,6 +141,7 @@ function gozulla_deals_ads_strongarm() {
   $strongarm->name = 'node_options_gozulla_ad';
   $strongarm->value = array(
     0 => 'status',
+    1 => 'revision',
   );
   $export['node_options_gozulla_ad'] = $strongarm;
 

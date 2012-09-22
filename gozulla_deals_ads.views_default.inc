@@ -31,36 +31,42 @@ function gozulla_deals_ads_views_default_views() {
   $handler->display->display_options['query']['options']['query_comment'] = FALSE;
   $handler->display->display_options['exposed_form']['type'] = 'basic';
   $handler->display->display_options['pager']['type'] = 'some';
-  $handler->display->display_options['pager']['options']['items_per_page'] = '5';
+  $handler->display->display_options['pager']['options']['items_per_page'] = '1';
   $handler->display->display_options['pager']['options']['offset'] = '0';
   $handler->display->display_options['style_plugin'] = 'default';
-  $handler->display->display_options['row_plugin'] = 'fields';
-  /* Field: Content: Deal photo */
-  $handler->display->display_options['fields']['field_deal_photo']['id'] = 'field_deal_photo';
-  $handler->display->display_options['fields']['field_deal_photo']['table'] = 'field_data_field_deal_photo';
-  $handler->display->display_options['fields']['field_deal_photo']['field'] = 'field_deal_photo';
-  $handler->display->display_options['fields']['field_deal_photo']['label'] = '';
-  $handler->display->display_options['fields']['field_deal_photo']['element_label_colon'] = FALSE;
-  $handler->display->display_options['fields']['field_deal_photo']['click_sort_column'] = 'fid';
-  $handler->display->display_options['fields']['field_deal_photo']['type'] = 'colorbox';
-  $handler->display->display_options['fields']['field_deal_photo']['settings'] = array(
-    'colorbox_node_style' => 'detail_thumbnail',
-    'colorbox_image_style' => 'colorbox_image',
-    'colorbox_gallery' => 'post',
-    'colorbox_gallery_custom' => '',
-    'colorbox_caption' => 'auto',
-    'colorbox_caption_custom' => '',
-  );
+  $handler->display->display_options['row_plugin'] = 'node';
+  $handler->display->display_options['row_options']['links'] = FALSE;
+  /* Relationship: Content: gozulla location (field_gozulla_location) */
+  $handler->display->display_options['relationships']['field_gozulla_location_nid']['id'] = 'field_gozulla_location_nid';
+  $handler->display->display_options['relationships']['field_gozulla_location_nid']['table'] = 'field_data_field_gozulla_location';
+  $handler->display->display_options['relationships']['field_gozulla_location_nid']['field'] = 'field_gozulla_location_nid';
+  $handler->display->display_options['relationships']['field_gozulla_location_nid']['required'] = TRUE;
+  $handler->display->display_options['relationships']['field_gozulla_location_nid']['delta'] = '0';
+  /* Field: location nid */
+  $handler->display->display_options['fields']['nid']['id'] = 'nid';
+  $handler->display->display_options['fields']['nid']['table'] = 'node';
+  $handler->display->display_options['fields']['nid']['field'] = 'nid';
+  $handler->display->display_options['fields']['nid']['relationship'] = 'field_gozulla_location_nid';
+  $handler->display->display_options['fields']['nid']['ui_name'] = 'location nid';
+  $handler->display->display_options['fields']['nid']['label'] = '';
+  $handler->display->display_options['fields']['nid']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['nid']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['nid']['node_in_colorbox_width'] = '600';
+  $handler->display->display_options['fields']['nid']['node_in_colorbox_height'] = '600';
   /* Field: Content: Title */
   $handler->display->display_options['fields']['title']['id'] = 'title';
   $handler->display->display_options['fields']['title']['table'] = 'node';
   $handler->display->display_options['fields']['title']['field'] = 'title';
   $handler->display->display_options['fields']['title']['label'] = '';
+  $handler->display->display_options['fields']['title']['alter']['make_link'] = TRUE;
+  $handler->display->display_options['fields']['title']['alter']['path'] = 'node/[nid]';
   $handler->display->display_options['fields']['title']['alter']['word_boundary'] = FALSE;
   $handler->display->display_options['fields']['title']['alter']['ellipsis'] = FALSE;
   $handler->display->display_options['fields']['title']['element_type'] = 'h3';
   $handler->display->display_options['fields']['title']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['title']['link_to_node'] = FALSE;
+  $handler->display->display_options['fields']['title']['node_in_colorbox_width'] = '600';
+  $handler->display->display_options['fields']['title']['node_in_colorbox_height'] = '600';
   /* Field: Deal Details */
   $handler->display->display_options['fields']['field_description']['id'] = 'field_description';
   $handler->display->display_options['fields']['field_description']['table'] = 'field_data_field_description';
@@ -92,7 +98,7 @@ function gozulla_deals_ads_views_default_views() {
   $handler->display->display_options['filters']['type']['table'] = 'node';
   $handler->display->display_options['filters']['type']['field'] = 'type';
   $handler->display->display_options['filters']['type']['value'] = array(
-    'gozulla_deals' => 'gozulla_deals',
+    'deal' => 'deal',
   );
   /* Filter criterion: Content: Deal active  (field_deal_active_) */
   $handler->display->display_options['filters']['field_deal_active__value']['id'] = 'field_deal_active__value';
@@ -105,7 +111,6 @@ function gozulla_deals_ads_views_default_views() {
   /* Display: location display */
   $handler = $view->new_display('block', 'location display', 'block');
   $handler->display->display_options['defaults']['title'] = FALSE;
-  $handler->display->display_options['title'] = 'deals';
   $handler->display->display_options['defaults']['hide_admin_links'] = FALSE;
   $handler->display->display_options['defaults']['pager'] = FALSE;
   $handler->display->display_options['pager']['type'] = 'some';
@@ -141,6 +146,91 @@ function gozulla_deals_ads_views_default_views() {
   $handler->display->display_options['pager']['options']['items_per_page'] = '0';
   $handler->display->display_options['pager']['options']['offset'] = '0';
   $handler->display->display_options['defaults']['sorts'] = FALSE;
+
+  /* Display: Print Deal */
+  $handler = $view->new_display('page', 'Print Deal', 'print_deal');
+  $handler->display->display_options['defaults']['title'] = FALSE;
+  $handler->display->display_options['defaults']['hide_admin_links'] = FALSE;
+  $handler->display->display_options['defaults']['pager'] = FALSE;
+  $handler->display->display_options['pager']['type'] = 'none';
+  $handler->display->display_options['pager']['options']['offset'] = '0';
+  $handler->display->display_options['defaults']['relationships'] = FALSE;
+  /* Relationship: Content: gozulla location (field_gozulla_location) */
+  $handler->display->display_options['relationships']['field_gozulla_location_nid']['id'] = 'field_gozulla_location_nid';
+  $handler->display->display_options['relationships']['field_gozulla_location_nid']['table'] = 'field_data_field_gozulla_location';
+  $handler->display->display_options['relationships']['field_gozulla_location_nid']['field'] = 'field_gozulla_location_nid';
+  $handler->display->display_options['relationships']['field_gozulla_location_nid']['delta'] = '0';
+  $handler->display->display_options['defaults']['fields'] = FALSE;
+  /* Field: Content: Title */
+  $handler->display->display_options['fields']['title']['id'] = 'title';
+  $handler->display->display_options['fields']['title']['table'] = 'node';
+  $handler->display->display_options['fields']['title']['field'] = 'title';
+  $handler->display->display_options['fields']['title']['label'] = '';
+  $handler->display->display_options['fields']['title']['alter']['word_boundary'] = FALSE;
+  $handler->display->display_options['fields']['title']['alter']['ellipsis'] = FALSE;
+  $handler->display->display_options['fields']['title']['element_type'] = 'h3';
+  $handler->display->display_options['fields']['title']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['title']['link_to_node'] = FALSE;
+  /* Field: Deal Details */
+  $handler->display->display_options['fields']['field_description']['id'] = 'field_description';
+  $handler->display->display_options['fields']['field_description']['table'] = 'field_data_field_description';
+  $handler->display->display_options['fields']['field_description']['field'] = 'field_description';
+  $handler->display->display_options['fields']['field_description']['ui_name'] = 'Deal Details';
+  $handler->display->display_options['fields']['field_description']['label'] = '';
+  $handler->display->display_options['fields']['field_description']['alter']['nl2br'] = TRUE;
+  $handler->display->display_options['fields']['field_description']['element_label_colon'] = FALSE;
+  /* Field: Content: Valid from */
+  $handler->display->display_options['fields']['field_deal_expiration_date']['id'] = 'field_deal_expiration_date';
+  $handler->display->display_options['fields']['field_deal_expiration_date']['table'] = 'field_data_field_deal_expiration_date';
+  $handler->display->display_options['fields']['field_deal_expiration_date']['field'] = 'field_deal_expiration_date';
+  $handler->display->display_options['fields']['field_deal_expiration_date']['label'] = 'Expires';
+  $handler->display->display_options['fields']['field_deal_expiration_date']['settings'] = array(
+    'format_type' => 'm_d_y',
+    'fromto' => 'value2',
+    'multiple_number' => '',
+    'multiple_from' => '',
+    'multiple_to' => '',
+  );
+  /* Field: Content: Title */
+  $handler->display->display_options['fields']['title_1']['id'] = 'title_1';
+  $handler->display->display_options['fields']['title_1']['table'] = 'node';
+  $handler->display->display_options['fields']['title_1']['field'] = 'title';
+  $handler->display->display_options['fields']['title_1']['relationship'] = 'field_gozulla_location_nid';
+  $handler->display->display_options['fields']['title_1']['label'] = '';
+  $handler->display->display_options['fields']['title_1']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['title_1']['node_in_colorbox_width'] = '600';
+  $handler->display->display_options['fields']['title_1']['node_in_colorbox_height'] = '600';
+  /* Field: Content: Business logo */
+  $handler->display->display_options['fields']['field_location_logo']['id'] = 'field_location_logo';
+  $handler->display->display_options['fields']['field_location_logo']['table'] = 'field_data_field_location_logo';
+  $handler->display->display_options['fields']['field_location_logo']['field'] = 'field_location_logo';
+  $handler->display->display_options['fields']['field_location_logo']['relationship'] = 'field_gozulla_location_nid';
+  $handler->display->display_options['fields']['field_location_logo']['label'] = '';
+  $handler->display->display_options['fields']['field_location_logo']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_location_logo']['click_sort_column'] = 'fid';
+  $handler->display->display_options['fields']['field_location_logo']['settings'] = array(
+    'image_style' => 'gozulla_client_logo',
+    'image_link' => '',
+  );
+  /* Field: Global: Custom text */
+  $handler->display->display_options['fields']['nothing']['id'] = 'nothing';
+  $handler->display->display_options['fields']['nothing']['table'] = 'views';
+  $handler->display->display_options['fields']['nothing']['field'] = 'nothing';
+  $handler->display->display_options['fields']['nothing']['label'] = '';
+  $handler->display->display_options['fields']['nothing']['alter']['text'] = '<a href="#" onClick="window.print()">Send to printer</a>';
+  $handler->display->display_options['fields']['nothing']['element_label_colon'] = FALSE;
+  $handler->display->display_options['defaults']['arguments'] = FALSE;
+  /* Contextual filter: Content: Nid */
+  $handler->display->display_options['arguments']['nid']['id'] = 'nid';
+  $handler->display->display_options['arguments']['nid']['table'] = 'node';
+  $handler->display->display_options['arguments']['nid']['field'] = 'nid';
+  $handler->display->display_options['arguments']['nid']['default_action'] = 'default';
+  $handler->display->display_options['arguments']['nid']['default_argument_type'] = 'node';
+  $handler->display->display_options['arguments']['nid']['summary']['number_of_records'] = '0';
+  $handler->display->display_options['arguments']['nid']['summary']['format'] = 'default_summary';
+  $handler->display->display_options['arguments']['nid']['summary_options']['items_per_page'] = '25';
+  $handler->display->display_options['arguments']['nid']['specify_validation'] = TRUE;
+  $handler->display->display_options['path'] = 'deals/%/print';
   $translatables['active_deals'] = array(
     t('Master'),
     t('one hot deal'),
@@ -150,13 +240,18 @@ function gozulla_deals_ads_views_default_views() {
     t('Sort by'),
     t('Asc'),
     t('Desc'),
+    t('field_gozulla_location'),
     t('[ edit ]'),
     t('location display'),
-    t('deals'),
     t('global deal'),
     t('Displays random deal on homepage'),
     t('directory display'),
+    t('deals'),
     t('Displays along with shops on directory pages'),
+    t('Print Deal'),
+    t('Expires'),
+    t('<a href="#" onClick="window.print()">Send to printer</a>'),
+    t('All'),
   );
   $export['active_deals'] = $view;
 
@@ -185,17 +280,6 @@ function gozulla_deals_ads_views_default_views() {
   $handler->display->display_options['pager']['options']['offset'] = '0';
   $handler->display->display_options['style_plugin'] = 'default';
   $handler->display->display_options['row_plugin'] = 'fields';
-  /* Field: Content: ad image */
-  $handler->display->display_options['fields']['field_ad_image']['id'] = 'field_ad_image';
-  $handler->display->display_options['fields']['field_ad_image']['table'] = 'field_data_field_ad_image';
-  $handler->display->display_options['fields']['field_ad_image']['field'] = 'field_ad_image';
-  $handler->display->display_options['fields']['field_ad_image']['label'] = '';
-  $handler->display->display_options['fields']['field_ad_image']['element_label_colon'] = FALSE;
-  $handler->display->display_options['fields']['field_ad_image']['click_sort_column'] = 'fid';
-  $handler->display->display_options['fields']['field_ad_image']['settings'] = array(
-    'image_style' => 'gozulla_ad',
-    'image_link' => '',
-  );
   /* Field: Content: deal link */
   $handler->display->display_options['fields']['field_deal_link']['id'] = 'field_deal_link';
   $handler->display->display_options['fields']['field_deal_link']['table'] = 'field_data_field_deal_link';
@@ -204,6 +288,19 @@ function gozulla_deals_ads_views_default_views() {
   $handler->display->display_options['fields']['field_deal_link']['exclude'] = TRUE;
   $handler->display->display_options['fields']['field_deal_link']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['field_deal_link']['click_sort_column'] = 'url';
+  /* Field: Content: ad image */
+  $handler->display->display_options['fields']['field_ad_image']['id'] = 'field_ad_image';
+  $handler->display->display_options['fields']['field_ad_image']['table'] = 'field_data_field_ad_image';
+  $handler->display->display_options['fields']['field_ad_image']['field'] = 'field_ad_image';
+  $handler->display->display_options['fields']['field_ad_image']['label'] = '';
+  $handler->display->display_options['fields']['field_ad_image']['alter']['make_link'] = TRUE;
+  $handler->display->display_options['fields']['field_ad_image']['alter']['path'] = '[field_deal_link]';
+  $handler->display->display_options['fields']['field_ad_image']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_ad_image']['click_sort_column'] = 'fid';
+  $handler->display->display_options['fields']['field_ad_image']['settings'] = array(
+    'image_style' => 'gozulla_ad',
+    'image_link' => '',
+  );
   /* Sort criterion: Content: Post date */
   $handler->display->display_options['sorts']['created']['id'] = 'created';
   $handler->display->display_options['sorts']['created']['table'] = 'node';
