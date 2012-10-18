@@ -84,6 +84,20 @@ function gozulla_deals_ads_views_default_views() {
   $handler->display->display_options['sorts']['random']['id'] = 'random';
   $handler->display->display_options['sorts']['random']['table'] = 'views';
   $handler->display->display_options['sorts']['random']['field'] = 'random';
+  /* Contextual filter: Content: gozulla location (field_gozulla_location) */
+  $handler->display->display_options['arguments']['field_gozulla_location_nid']['id'] = 'field_gozulla_location_nid';
+  $handler->display->display_options['arguments']['field_gozulla_location_nid']['table'] = 'field_data_field_gozulla_location';
+  $handler->display->display_options['arguments']['field_gozulla_location_nid']['field'] = 'field_gozulla_location_nid';
+  $handler->display->display_options['arguments']['field_gozulla_location_nid']['default_action'] = 'default';
+  $handler->display->display_options['arguments']['field_gozulla_location_nid']['default_argument_type'] = 'node';
+  $handler->display->display_options['arguments']['field_gozulla_location_nid']['summary']['number_of_records'] = '0';
+  $handler->display->display_options['arguments']['field_gozulla_location_nid']['summary']['format'] = 'default_summary';
+  $handler->display->display_options['arguments']['field_gozulla_location_nid']['summary_options']['items_per_page'] = '25';
+  $handler->display->display_options['arguments']['field_gozulla_location_nid']['specify_validation'] = TRUE;
+  $handler->display->display_options['arguments']['field_gozulla_location_nid']['validate']['type'] = 'node';
+  $handler->display->display_options['arguments']['field_gozulla_location_nid']['validate_options']['types'] = array(
+    'gozullalocation' => 'gozullalocation',
+  );
   /* Filter criterion: Content: Published */
   $handler->display->display_options['filters']['status']['id'] = 'status';
   $handler->display->display_options['filters']['status']['table'] = 'node';
@@ -132,6 +146,21 @@ function gozulla_deals_ads_views_default_views() {
   $handler->display->display_options['sorts']['created']['table'] = 'node';
   $handler->display->display_options['sorts']['created']['field'] = 'created';
   $handler->display->display_options['sorts']['created']['order'] = 'DESC';
+  $handler->display->display_options['defaults']['arguments'] = FALSE;
+  /* Contextual filter: Content: gozulla location (field_gozulla_location) */
+  $handler->display->display_options['arguments']['field_gozulla_location_nid']['id'] = 'field_gozulla_location_nid';
+  $handler->display->display_options['arguments']['field_gozulla_location_nid']['table'] = 'field_data_field_gozulla_location';
+  $handler->display->display_options['arguments']['field_gozulla_location_nid']['field'] = 'field_gozulla_location_nid';
+  $handler->display->display_options['arguments']['field_gozulla_location_nid']['default_action'] = 'default';
+  $handler->display->display_options['arguments']['field_gozulla_location_nid']['default_argument_type'] = 'node';
+  $handler->display->display_options['arguments']['field_gozulla_location_nid']['summary']['number_of_records'] = '0';
+  $handler->display->display_options['arguments']['field_gozulla_location_nid']['summary']['format'] = 'default_summary';
+  $handler->display->display_options['arguments']['field_gozulla_location_nid']['summary_options']['items_per_page'] = '25';
+  $handler->display->display_options['arguments']['field_gozulla_location_nid']['specify_validation'] = TRUE;
+  $handler->display->display_options['arguments']['field_gozulla_location_nid']['validate']['type'] = 'node';
+  $handler->display->display_options['arguments']['field_gozulla_location_nid']['validate_options']['types'] = array(
+    'gozullalocation' => 'gozullalocation',
+  );
 
   /* Display: global deal */
   $handler = $view->new_display('block', 'global deal', 'global_deal_block');
@@ -321,6 +350,7 @@ function gozulla_deals_ads_views_default_views() {
     t('Asc'),
     t('Desc'),
     t('[ edit ]'),
+    t('All'),
     t('location display'),
     t('<h3 class="business-deals"><a id="deals">Business Deals</a></h3>'),
     t('global deal'),
@@ -332,7 +362,6 @@ function gozulla_deals_ads_views_default_views() {
     t('Print Deal'),
     t('Expires'),
     t('<a href="#" onClick="window.print()">Send to printer</a>'),
-    t('All'),
   );
   $export['active_deals'] = $view;
 
@@ -484,21 +513,10 @@ function gozulla_deals_ads_views_default_views() {
   $handler->display->display_options['query']['options']['query_comment'] = FALSE;
   $handler->display->display_options['exposed_form']['type'] = 'basic';
   $handler->display->display_options['pager']['type'] = 'some';
-  $handler->display->display_options['pager']['options']['items_per_page'] = '0';
+  $handler->display->display_options['pager']['options']['items_per_page'] = '1';
   $handler->display->display_options['pager']['options']['offset'] = '0';
   $handler->display->display_options['style_plugin'] = 'default';
   $handler->display->display_options['row_plugin'] = 'fields';
-  /* Field: Content: ad image */
-  $handler->display->display_options['fields']['field_ad_image']['id'] = 'field_ad_image';
-  $handler->display->display_options['fields']['field_ad_image']['table'] = 'field_data_field_ad_image';
-  $handler->display->display_options['fields']['field_ad_image']['field'] = 'field_ad_image';
-  $handler->display->display_options['fields']['field_ad_image']['label'] = '';
-  $handler->display->display_options['fields']['field_ad_image']['element_label_colon'] = FALSE;
-  $handler->display->display_options['fields']['field_ad_image']['click_sort_column'] = 'fid';
-  $handler->display->display_options['fields']['field_ad_image']['settings'] = array(
-    'image_style' => 'gozulla_ad',
-    'image_link' => '',
-  );
   /* Field: Content: deal link */
   $handler->display->display_options['fields']['field_deal_link']['id'] = 'field_deal_link';
   $handler->display->display_options['fields']['field_deal_link']['table'] = 'field_data_field_deal_link';
@@ -507,6 +525,20 @@ function gozulla_deals_ads_views_default_views() {
   $handler->display->display_options['fields']['field_deal_link']['exclude'] = TRUE;
   $handler->display->display_options['fields']['field_deal_link']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['field_deal_link']['click_sort_column'] = 'url';
+  $handler->display->display_options['fields']['field_deal_link']['type'] = 'link_url';
+  /* Field: Content: ad image */
+  $handler->display->display_options['fields']['field_ad_image']['id'] = 'field_ad_image';
+  $handler->display->display_options['fields']['field_ad_image']['table'] = 'field_data_field_ad_image';
+  $handler->display->display_options['fields']['field_ad_image']['field'] = 'field_ad_image';
+  $handler->display->display_options['fields']['field_ad_image']['label'] = '';
+  $handler->display->display_options['fields']['field_ad_image']['alter']['make_link'] = TRUE;
+  $handler->display->display_options['fields']['field_ad_image']['alter']['path'] = '[field_deal_link]';
+  $handler->display->display_options['fields']['field_ad_image']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_ad_image']['click_sort_column'] = 'fid';
+  $handler->display->display_options['fields']['field_ad_image']['settings'] = array(
+    'image_style' => 'gozulla_ad',
+    'image_link' => '',
+  );
   /* Sort criterion: Content: Post date */
   $handler->display->display_options['sorts']['created']['id'] = 'created';
   $handler->display->display_options['sorts']['created']['table'] = 'node';
@@ -525,11 +557,37 @@ function gozulla_deals_ads_views_default_views() {
   $handler->display->display_options['filters']['type']['value'] = array(
     'gozulla_ad' => 'gozulla_ad',
   );
+  /* Filter criterion: Content: Has taxonomy term */
+  $handler->display->display_options['filters']['tid']['id'] = 'tid';
+  $handler->display->display_options['filters']['tid']['table'] = 'taxonomy_index';
+  $handler->display->display_options['filters']['tid']['field'] = 'tid';
+  $handler->display->display_options['filters']['tid']['value'] = array(
+    14 => '14',
+    15 => '15',
+    13 => '13',
+    20 => '20',
+    18 => '18',
+    19 => '19',
+    12 => '12',
+  );
+  $handler->display->display_options['filters']['tid']['type'] = 'select';
+  $handler->display->display_options['filters']['tid']['vocabulary'] = 'gozulla_sport';
+  /* Filter criterion: Content: gozulla help ad? (field_gozulla_help_ad) */
+  $handler->display->display_options['filters']['field_gozulla_help_ad_value']['id'] = 'field_gozulla_help_ad_value';
+  $handler->display->display_options['filters']['field_gozulla_help_ad_value']['table'] = 'field_data_field_gozulla_help_ad';
+  $handler->display->display_options['filters']['field_gozulla_help_ad_value']['field'] = 'field_gozulla_help_ad_value';
+  $handler->display->display_options['filters']['field_gozulla_help_ad_value']['value'] = array(
+    0 => '0',
+  );
 
   /* Display: help-boat */
   $handler = $view->new_display('block', 'help-boat', 'help_boat');
   $handler->display->display_options['display_description'] = 'displays boat help ad';
   $handler->display->display_options['defaults']['hide_admin_links'] = FALSE;
+  $handler->display->display_options['defaults']['pager'] = FALSE;
+  $handler->display->display_options['pager']['type'] = 'some';
+  $handler->display->display_options['pager']['options']['items_per_page'] = '1';
+  $handler->display->display_options['pager']['options']['offset'] = '0';
   $handler->display->display_options['defaults']['filter_groups'] = FALSE;
   $handler->display->display_options['defaults']['filters'] = FALSE;
   /* Filter criterion: Content: Published */
@@ -555,6 +613,13 @@ function gozulla_deals_ads_views_default_views() {
   );
   $handler->display->display_options['filters']['tid']['type'] = 'select';
   $handler->display->display_options['filters']['tid']['vocabulary'] = 'gozulla_sport';
+  /* Filter criterion: Content: gozulla help ad? (field_gozulla_help_ad) */
+  $handler->display->display_options['filters']['field_gozulla_help_ad_value']['id'] = 'field_gozulla_help_ad_value';
+  $handler->display->display_options['filters']['field_gozulla_help_ad_value']['table'] = 'field_data_field_gozulla_help_ad';
+  $handler->display->display_options['filters']['field_gozulla_help_ad_value']['field'] = 'field_gozulla_help_ad_value';
+  $handler->display->display_options['filters']['field_gozulla_help_ad_value']['value'] = array(
+    1 => '1',
+  );
 
   /* Display: help-bike */
   $handler = $view->new_display('block', 'help-bike', 'help_bike');
@@ -585,6 +650,13 @@ function gozulla_deals_ads_views_default_views() {
   );
   $handler->display->display_options['filters']['tid']['type'] = 'select';
   $handler->display->display_options['filters']['tid']['vocabulary'] = 'gozulla_sport';
+  /* Filter criterion: Content: gozulla help ad? (field_gozulla_help_ad) */
+  $handler->display->display_options['filters']['field_gozulla_help_ad_value']['id'] = 'field_gozulla_help_ad_value';
+  $handler->display->display_options['filters']['field_gozulla_help_ad_value']['table'] = 'field_data_field_gozulla_help_ad';
+  $handler->display->display_options['filters']['field_gozulla_help_ad_value']['field'] = 'field_gozulla_help_ad_value';
+  $handler->display->display_options['filters']['field_gozulla_help_ad_value']['value'] = array(
+    1 => '1',
+  );
 
   /* Display: help-climb */
   $handler = $view->new_display('block', 'help-climb', 'help_climb');
@@ -615,6 +687,13 @@ function gozulla_deals_ads_views_default_views() {
   );
   $handler->display->display_options['filters']['tid']['type'] = 'select';
   $handler->display->display_options['filters']['tid']['vocabulary'] = 'gozulla_sport';
+  /* Filter criterion: Content: gozulla help ad? (field_gozulla_help_ad) */
+  $handler->display->display_options['filters']['field_gozulla_help_ad_value']['id'] = 'field_gozulla_help_ad_value';
+  $handler->display->display_options['filters']['field_gozulla_help_ad_value']['table'] = 'field_data_field_gozulla_help_ad';
+  $handler->display->display_options['filters']['field_gozulla_help_ad_value']['field'] = 'field_gozulla_help_ad_value';
+  $handler->display->display_options['filters']['field_gozulla_help_ad_value']['value'] = array(
+    1 => '1',
+  );
 
   /* Display: help-golf */
   $handler = $view->new_display('block', 'help-golf', 'help_golf');
@@ -645,6 +724,13 @@ function gozulla_deals_ads_views_default_views() {
   );
   $handler->display->display_options['filters']['tid']['type'] = 'select';
   $handler->display->display_options['filters']['tid']['vocabulary'] = 'gozulla_sport';
+  /* Filter criterion: Content: gozulla help ad? (field_gozulla_help_ad) */
+  $handler->display->display_options['filters']['field_gozulla_help_ad_value']['id'] = 'field_gozulla_help_ad_value';
+  $handler->display->display_options['filters']['field_gozulla_help_ad_value']['table'] = 'field_data_field_gozulla_help_ad';
+  $handler->display->display_options['filters']['field_gozulla_help_ad_value']['field'] = 'field_gozulla_help_ad_value';
+  $handler->display->display_options['filters']['field_gozulla_help_ad_value']['value'] = array(
+    1 => '1',
+  );
 
   /* Display: help-skate */
   $handler = $view->new_display('block', 'help-skate', 'help_skate');
@@ -675,6 +761,13 @@ function gozulla_deals_ads_views_default_views() {
   );
   $handler->display->display_options['filters']['tid']['type'] = 'select';
   $handler->display->display_options['filters']['tid']['vocabulary'] = 'gozulla_sport';
+  /* Filter criterion: Content: gozulla help ad? (field_gozulla_help_ad) */
+  $handler->display->display_options['filters']['field_gozulla_help_ad_value']['id'] = 'field_gozulla_help_ad_value';
+  $handler->display->display_options['filters']['field_gozulla_help_ad_value']['table'] = 'field_data_field_gozulla_help_ad';
+  $handler->display->display_options['filters']['field_gozulla_help_ad_value']['field'] = 'field_gozulla_help_ad_value';
+  $handler->display->display_options['filters']['field_gozulla_help_ad_value']['value'] = array(
+    1 => '1',
+  );
 
   /* Display: help-snow */
   $handler = $view->new_display('block', 'help-snow', 'help_snow');
@@ -705,6 +798,13 @@ function gozulla_deals_ads_views_default_views() {
   );
   $handler->display->display_options['filters']['tid']['type'] = 'select';
   $handler->display->display_options['filters']['tid']['vocabulary'] = 'gozulla_sport';
+  /* Filter criterion: Content: gozulla help ad? (field_gozulla_help_ad) */
+  $handler->display->display_options['filters']['field_gozulla_help_ad_value']['id'] = 'field_gozulla_help_ad_value';
+  $handler->display->display_options['filters']['field_gozulla_help_ad_value']['table'] = 'field_data_field_gozulla_help_ad';
+  $handler->display->display_options['filters']['field_gozulla_help_ad_value']['field'] = 'field_gozulla_help_ad_value';
+  $handler->display->display_options['filters']['field_gozulla_help_ad_value']['value'] = array(
+    1 => '1',
+  );
 
   /* Display: help-surf */
   $handler = $view->new_display('block', 'help-surf', 'help_surf');
@@ -735,6 +835,125 @@ function gozulla_deals_ads_views_default_views() {
   );
   $handler->display->display_options['filters']['tid']['type'] = 'select';
   $handler->display->display_options['filters']['tid']['vocabulary'] = 'gozulla_sport';
+  /* Filter criterion: Content: gozulla help ad? (field_gozulla_help_ad) */
+  $handler->display->display_options['filters']['field_gozulla_help_ad_value']['id'] = 'field_gozulla_help_ad_value';
+  $handler->display->display_options['filters']['field_gozulla_help_ad_value']['table'] = 'field_data_field_gozulla_help_ad';
+  $handler->display->display_options['filters']['field_gozulla_help_ad_value']['field'] = 'field_gozulla_help_ad_value';
+  $handler->display->display_options['filters']['field_gozulla_help_ad_value']['value'] = array(
+    1 => '1',
+  );
+
+  /* Display: help-deals */
+  $handler = $view->new_display('block', 'help-deals', 'all_gozulla_ads');
+  $handler->display->display_options['display_description'] = 'shows ads on all deals page';
+  $handler->display->display_options['defaults']['hide_admin_links'] = FALSE;
+  $handler->display->display_options['defaults']['pager'] = FALSE;
+  $handler->display->display_options['pager']['type'] = 'some';
+  $handler->display->display_options['pager']['options']['items_per_page'] = '1';
+  $handler->display->display_options['pager']['options']['offset'] = '0';
+  $handler->display->display_options['defaults']['sorts'] = FALSE;
+  /* Sort criterion: Global: Random */
+  $handler->display->display_options['sorts']['random']['id'] = 'random';
+  $handler->display->display_options['sorts']['random']['table'] = 'views';
+  $handler->display->display_options['sorts']['random']['field'] = 'random';
+  $handler->display->display_options['defaults']['filter_groups'] = FALSE;
+  $handler->display->display_options['defaults']['filters'] = FALSE;
+  /* Filter criterion: Content: Published */
+  $handler->display->display_options['filters']['status']['id'] = 'status';
+  $handler->display->display_options['filters']['status']['table'] = 'node';
+  $handler->display->display_options['filters']['status']['field'] = 'status';
+  $handler->display->display_options['filters']['status']['value'] = 1;
+  $handler->display->display_options['filters']['status']['group'] = 1;
+  $handler->display->display_options['filters']['status']['expose']['operator'] = FALSE;
+  /* Filter criterion: Content: Type */
+  $handler->display->display_options['filters']['type']['id'] = 'type';
+  $handler->display->display_options['filters']['type']['table'] = 'node';
+  $handler->display->display_options['filters']['type']['field'] = 'type';
+  $handler->display->display_options['filters']['type']['value'] = array(
+    'gozulla_ad' => 'gozulla_ad',
+  );
+  /* Filter criterion: Content: gozulla help ad? (field_gozulla_help_ad) */
+  $handler->display->display_options['filters']['field_gozulla_help_ad_value']['id'] = 'field_gozulla_help_ad_value';
+  $handler->display->display_options['filters']['field_gozulla_help_ad_value']['table'] = 'field_data_field_gozulla_help_ad';
+  $handler->display->display_options['filters']['field_gozulla_help_ad_value']['field'] = 'field_gozulla_help_ad_value';
+  $handler->display->display_options['filters']['field_gozulla_help_ad_value']['value'] = array(
+    1 => '1',
+  );
+
+  /* Display: client ads */
+  $handler = $view->new_display('block', 'client ads', 'client_ad');
+  $handler->display->display_options['defaults']['title'] = FALSE;
+  $handler->display->display_options['defaults']['css_class'] = FALSE;
+  $handler->display->display_options['css_class'] = 'client-ad';
+  $handler->display->display_options['defaults']['hide_admin_links'] = FALSE;
+  $handler->display->display_options['defaults']['pager'] = FALSE;
+  $handler->display->display_options['pager']['type'] = 'some';
+  $handler->display->display_options['pager']['options']['items_per_page'] = '0';
+  $handler->display->display_options['pager']['options']['offset'] = '0';
+  $handler->display->display_options['defaults']['fields'] = FALSE;
+  /* Field: Content: Sports */
+  $handler->display->display_options['fields']['field_gozulla_sport']['id'] = 'field_gozulla_sport';
+  $handler->display->display_options['fields']['field_gozulla_sport']['table'] = 'field_data_field_gozulla_sport';
+  $handler->display->display_options['fields']['field_gozulla_sport']['field'] = 'field_gozulla_sport';
+  $handler->display->display_options['fields']['field_gozulla_sport']['label'] = '';
+  $handler->display->display_options['fields']['field_gozulla_sport']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['field_gozulla_sport']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_gozulla_sport']['delta_offset'] = '0';
+  /* Field: Content: deal link */
+  $handler->display->display_options['fields']['field_deal_link']['id'] = 'field_deal_link';
+  $handler->display->display_options['fields']['field_deal_link']['table'] = 'field_data_field_deal_link';
+  $handler->display->display_options['fields']['field_deal_link']['field'] = 'field_deal_link';
+  $handler->display->display_options['fields']['field_deal_link']['label'] = '';
+  $handler->display->display_options['fields']['field_deal_link']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['field_deal_link']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_deal_link']['click_sort_column'] = 'url';
+  $handler->display->display_options['fields']['field_deal_link']['type'] = 'link_url';
+  /* Field: Content: ad image */
+  $handler->display->display_options['fields']['field_ad_image']['id'] = 'field_ad_image';
+  $handler->display->display_options['fields']['field_ad_image']['table'] = 'field_data_field_ad_image';
+  $handler->display->display_options['fields']['field_ad_image']['field'] = 'field_ad_image';
+  $handler->display->display_options['fields']['field_ad_image']['label'] = '';
+  $handler->display->display_options['fields']['field_ad_image']['alter']['make_link'] = TRUE;
+  $handler->display->display_options['fields']['field_ad_image']['alter']['path'] = '[field_deal_link]';
+  $handler->display->display_options['fields']['field_ad_image']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_ad_image']['click_sort_column'] = 'fid';
+  $handler->display->display_options['fields']['field_ad_image']['settings'] = array(
+    'image_style' => 'gozulla_ad',
+    'image_link' => '',
+  );
+  $handler->display->display_options['defaults']['sorts'] = FALSE;
+  /* Sort criterion: Content: Post date */
+  $handler->display->display_options['sorts']['created']['id'] = 'created';
+  $handler->display->display_options['sorts']['created']['table'] = 'node';
+  $handler->display->display_options['sorts']['created']['field'] = 'created';
+  /* Sort criterion: Content: Sticky */
+  $handler->display->display_options['sorts']['sticky']['id'] = 'sticky';
+  $handler->display->display_options['sorts']['sticky']['table'] = 'node';
+  $handler->display->display_options['sorts']['sticky']['field'] = 'sticky';
+  $handler->display->display_options['sorts']['sticky']['order'] = 'DESC';
+  $handler->display->display_options['defaults']['filter_groups'] = FALSE;
+  $handler->display->display_options['defaults']['filters'] = FALSE;
+  /* Filter criterion: Content: Published */
+  $handler->display->display_options['filters']['status']['id'] = 'status';
+  $handler->display->display_options['filters']['status']['table'] = 'node';
+  $handler->display->display_options['filters']['status']['field'] = 'status';
+  $handler->display->display_options['filters']['status']['value'] = 1;
+  $handler->display->display_options['filters']['status']['group'] = 1;
+  $handler->display->display_options['filters']['status']['expose']['operator'] = FALSE;
+  /* Filter criterion: Content: Type */
+  $handler->display->display_options['filters']['type']['id'] = 'type';
+  $handler->display->display_options['filters']['type']['table'] = 'node';
+  $handler->display->display_options['filters']['type']['field'] = 'type';
+  $handler->display->display_options['filters']['type']['value'] = array(
+    'gozulla_ad' => 'gozulla_ad',
+  );
+  /* Filter criterion: Content: gozulla help ad? (field_gozulla_help_ad) */
+  $handler->display->display_options['filters']['field_gozulla_help_ad_value']['id'] = 'field_gozulla_help_ad_value';
+  $handler->display->display_options['filters']['field_gozulla_help_ad_value']['table'] = 'field_data_field_gozulla_help_ad';
+  $handler->display->display_options['filters']['field_gozulla_help_ad_value']['field'] = 'field_gozulla_help_ad_value';
+  $handler->display->display_options['filters']['field_gozulla_help_ad_value']['value'] = array(
+    0 => '0',
+  );
   $translatables['gozulla_ads'] = array(
     t('Master'),
     t('community sponsors'),
@@ -758,6 +977,9 @@ function gozulla_deals_ads_views_default_views() {
     t('displays snow help ad'),
     t('help-surf'),
     t('displays surf help ad'),
+    t('help-deals'),
+    t('shows ads on all deals page'),
+    t('client ads'),
   );
   $export['gozulla_ads'] = $view;
 

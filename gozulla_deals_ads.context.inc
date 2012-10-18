@@ -119,9 +119,9 @@ function gozulla_deals_ads_context_default_contexts() {
   $context->reactions = array(
     'block' => array(
       'blocks' => array(
-        'views-feed_display-block_1' => array(
+        'views-feed_display-combined_feed' => array(
           'module' => 'views',
-          'delta' => 'feed_display-block_1',
+          'delta' => 'feed_display-combined_feed',
           'region' => 'sidebar_second',
           'weight' => '-10',
         ),

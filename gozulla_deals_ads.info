@@ -27,6 +27,7 @@ features[ctools][] = views:views_default:3.0
 features[features_api][] = api:1
 features[field][] = node-gozulla_ad-field_ad_image
 features[field][] = node-gozulla_ad-field_deal_link
+features[field][] = node-gozulla_ad-field_gozulla_help_ad
 features[field][] = node-gozulla_ad-field_gozulla_sport
 features[node][] = gozulla_ad
 features[variable][] = additional_settings__active_tab_gozulla_deals
