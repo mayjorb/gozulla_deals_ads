@@ -452,6 +452,15 @@ function gozulla_deals_ads_views_default_views() {
   $handler->display->display_options['fields']['field_website']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['field_website']['click_sort_column'] = 'url';
   $handler->display->display_options['fields']['field_website']['type'] = 'link_url';
+  /* Contextual filter: Content: Nid */
+  $handler->display->display_options['arguments']['nid']['id'] = 'nid';
+  $handler->display->display_options['arguments']['nid']['table'] = 'node';
+  $handler->display->display_options['arguments']['nid']['field'] = 'nid';
+  $handler->display->display_options['arguments']['nid']['default_action'] = 'default';
+  $handler->display->display_options['arguments']['nid']['default_argument_type'] = 'node';
+  $handler->display->display_options['arguments']['nid']['summary']['number_of_records'] = '0';
+  $handler->display->display_options['arguments']['nid']['summary']['format'] = 'default_summary';
+  $handler->display->display_options['arguments']['nid']['summary_options']['items_per_page'] = '25';
   /* Filter criterion: Content: Published */
   $handler->display->display_options['filters']['status']['id'] = 'status';
   $handler->display->display_options['filters']['status']['table'] = 'node';
@@ -475,6 +484,7 @@ function gozulla_deals_ads_views_default_views() {
   $handler->display->display_options['bundles'] = array(
     0 => 'deal',
   );
+  $handler->display->display_options['argument_mode'] = 'none';
   $translatables['deal_location_data'] = array(
     t('Master'),
     t('deal location data'),
@@ -487,6 +497,7 @@ function gozulla_deals_ads_views_default_views() {
     t('[field_address_1-thoroughfare] <br />
 [field_address_1-locality], [field_address_1-administrative_area]  [field_address_1-postal_code]
 '),
+    t('All'),
     t('business information'),
     t('display business information on gozulla deals'),
   );
@@ -497,7 +508,7 @@ function gozulla_deals_ads_views_default_views() {
   $view->description = 'for displaying ads in sidebar';
   $view->tag = 'default';
   $view->base_table = 'node';
-  $view->human_name = 'gozulla ads';
+  $view->human_name = 'Focus ads';
   $view->core = 7;
   $view->api_version = '3.0';
   $view->disabled = FALSE; /* Edit this to true to make a default view disabled initially */
@@ -526,17 +537,17 @@ function gozulla_deals_ads_views_default_views() {
   $handler->display->display_options['fields']['field_deal_link']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['field_deal_link']['click_sort_column'] = 'url';
   $handler->display->display_options['fields']['field_deal_link']['type'] = 'link_url';
-  /* Field: Content: ad image */
-  $handler->display->display_options['fields']['field_ad_image']['id'] = 'field_ad_image';
-  $handler->display->display_options['fields']['field_ad_image']['table'] = 'field_data_field_ad_image';
-  $handler->display->display_options['fields']['field_ad_image']['field'] = 'field_ad_image';
-  $handler->display->display_options['fields']['field_ad_image']['label'] = '';
-  $handler->display->display_options['fields']['field_ad_image']['alter']['make_link'] = TRUE;
-  $handler->display->display_options['fields']['field_ad_image']['alter']['path'] = '[field_deal_link]';
-  $handler->display->display_options['fields']['field_ad_image']['element_label_colon'] = FALSE;
-  $handler->display->display_options['fields']['field_ad_image']['click_sort_column'] = 'fid';
-  $handler->display->display_options['fields']['field_ad_image']['settings'] = array(
-    'image_style' => 'gozulla_ad',
+  /* Field: Content: Focus ad image */
+  $handler->display->display_options['fields']['field_focusad_image']['id'] = 'field_focusad_image';
+  $handler->display->display_options['fields']['field_focusad_image']['table'] = 'field_data_field_focusad_image';
+  $handler->display->display_options['fields']['field_focusad_image']['field'] = 'field_focusad_image';
+  $handler->display->display_options['fields']['field_focusad_image']['label'] = '';
+  $handler->display->display_options['fields']['field_focusad_image']['alter']['make_link'] = TRUE;
+  $handler->display->display_options['fields']['field_focusad_image']['alter']['path'] = '[field_deal_link]';
+  $handler->display->display_options['fields']['field_focusad_image']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_focusad_image']['click_sort_column'] = 'fid';
+  $handler->display->display_options['fields']['field_focusad_image']['settings'] = array(
+    'image_style' => '',
     'image_link' => '',
   );
   /* Sort criterion: Content: Post date */
@@ -555,7 +566,7 @@ function gozulla_deals_ads_views_default_views() {
   $handler->display->display_options['filters']['type']['table'] = 'node';
   $handler->display->display_options['filters']['type']['field'] = 'type';
   $handler->display->display_options['filters']['type']['value'] = array(
-    'gozulla_ad' => 'gozulla_ad',
+    'focusad' => 'focusad',
   );
   /* Filter criterion: Content: Has taxonomy term */
   $handler->display->display_options['filters']['tid']['id'] = 'tid';
@@ -571,13 +582,13 @@ function gozulla_deals_ads_views_default_views() {
     12 => '12',
   );
   $handler->display->display_options['filters']['tid']['type'] = 'select';
-  $handler->display->display_options['filters']['tid']['vocabulary'] = 'gozulla_sport';
-  /* Filter criterion: Content: gozulla help ad? (field_gozulla_help_ad) */
+  $handler->display->display_options['filters']['tid']['vocabulary'] = 'focus_sport';
+  /* Filter criterion: Content: Focus help ad? (field_gozulla_help_ad) */
   $handler->display->display_options['filters']['field_gozulla_help_ad_value']['id'] = 'field_gozulla_help_ad_value';
   $handler->display->display_options['filters']['field_gozulla_help_ad_value']['table'] = 'field_data_field_gozulla_help_ad';
   $handler->display->display_options['filters']['field_gozulla_help_ad_value']['field'] = 'field_gozulla_help_ad_value';
   $handler->display->display_options['filters']['field_gozulla_help_ad_value']['value'] = array(
-    0 => '0',
+    1 => '1',
   );
 
   /* Display: help-boat */
@@ -602,7 +613,7 @@ function gozulla_deals_ads_views_default_views() {
   $handler->display->display_options['filters']['type']['table'] = 'node';
   $handler->display->display_options['filters']['type']['field'] = 'type';
   $handler->display->display_options['filters']['type']['value'] = array(
-    'gozulla_ad' => 'gozulla_ad',
+    'focusad' => 'focusad',
   );
   /* Filter criterion: Content: Has taxonomy term */
   $handler->display->display_options['filters']['tid']['id'] = 'tid';
@@ -612,8 +623,8 @@ function gozulla_deals_ads_views_default_views() {
     15 => '15',
   );
   $handler->display->display_options['filters']['tid']['type'] = 'select';
-  $handler->display->display_options['filters']['tid']['vocabulary'] = 'gozulla_sport';
-  /* Filter criterion: Content: gozulla help ad? (field_gozulla_help_ad) */
+  $handler->display->display_options['filters']['tid']['vocabulary'] = 'focus_sport';
+  /* Filter criterion: Content: Focus help ad? (field_gozulla_help_ad) */
   $handler->display->display_options['filters']['field_gozulla_help_ad_value']['id'] = 'field_gozulla_help_ad_value';
   $handler->display->display_options['filters']['field_gozulla_help_ad_value']['table'] = 'field_data_field_gozulla_help_ad';
   $handler->display->display_options['filters']['field_gozulla_help_ad_value']['field'] = 'field_gozulla_help_ad_value';
@@ -639,7 +650,7 @@ function gozulla_deals_ads_views_default_views() {
   $handler->display->display_options['filters']['type']['table'] = 'node';
   $handler->display->display_options['filters']['type']['field'] = 'type';
   $handler->display->display_options['filters']['type']['value'] = array(
-    'gozulla_ad' => 'gozulla_ad',
+    'focusad' => 'focusad',
   );
   /* Filter criterion: Content: Has taxonomy term */
   $handler->display->display_options['filters']['tid']['id'] = 'tid';
@@ -649,8 +660,8 @@ function gozulla_deals_ads_views_default_views() {
     14 => '14',
   );
   $handler->display->display_options['filters']['tid']['type'] = 'select';
-  $handler->display->display_options['filters']['tid']['vocabulary'] = 'gozulla_sport';
-  /* Filter criterion: Content: gozulla help ad? (field_gozulla_help_ad) */
+  $handler->display->display_options['filters']['tid']['vocabulary'] = 'focus_sport';
+  /* Filter criterion: Content: Focus help ad? (field_gozulla_help_ad) */
   $handler->display->display_options['filters']['field_gozulla_help_ad_value']['id'] = 'field_gozulla_help_ad_value';
   $handler->display->display_options['filters']['field_gozulla_help_ad_value']['table'] = 'field_data_field_gozulla_help_ad';
   $handler->display->display_options['filters']['field_gozulla_help_ad_value']['field'] = 'field_gozulla_help_ad_value';
@@ -676,7 +687,7 @@ function gozulla_deals_ads_views_default_views() {
   $handler->display->display_options['filters']['type']['table'] = 'node';
   $handler->display->display_options['filters']['type']['field'] = 'type';
   $handler->display->display_options['filters']['type']['value'] = array(
-    'gozulla_ad' => 'gozulla_ad',
+    'focusad' => 'focusad',
   );
   /* Filter criterion: Content: Has taxonomy term */
   $handler->display->display_options['filters']['tid']['id'] = 'tid';
@@ -686,8 +697,8 @@ function gozulla_deals_ads_views_default_views() {
     13 => '13',
   );
   $handler->display->display_options['filters']['tid']['type'] = 'select';
-  $handler->display->display_options['filters']['tid']['vocabulary'] = 'gozulla_sport';
-  /* Filter criterion: Content: gozulla help ad? (field_gozulla_help_ad) */
+  $handler->display->display_options['filters']['tid']['vocabulary'] = 'focus_sport';
+  /* Filter criterion: Content: Focus help ad? (field_gozulla_help_ad) */
   $handler->display->display_options['filters']['field_gozulla_help_ad_value']['id'] = 'field_gozulla_help_ad_value';
   $handler->display->display_options['filters']['field_gozulla_help_ad_value']['table'] = 'field_data_field_gozulla_help_ad';
   $handler->display->display_options['filters']['field_gozulla_help_ad_value']['field'] = 'field_gozulla_help_ad_value';
@@ -713,7 +724,7 @@ function gozulla_deals_ads_views_default_views() {
   $handler->display->display_options['filters']['type']['table'] = 'node';
   $handler->display->display_options['filters']['type']['field'] = 'type';
   $handler->display->display_options['filters']['type']['value'] = array(
-    'gozulla_ad' => 'gozulla_ad',
+    'focusad' => 'focusad',
   );
   /* Filter criterion: Content: Has taxonomy term */
   $handler->display->display_options['filters']['tid']['id'] = 'tid';
@@ -723,8 +734,8 @@ function gozulla_deals_ads_views_default_views() {
     20 => '20',
   );
   $handler->display->display_options['filters']['tid']['type'] = 'select';
-  $handler->display->display_options['filters']['tid']['vocabulary'] = 'gozulla_sport';
-  /* Filter criterion: Content: gozulla help ad? (field_gozulla_help_ad) */
+  $handler->display->display_options['filters']['tid']['vocabulary'] = 'focus_sport';
+  /* Filter criterion: Content: Focus help ad? (field_gozulla_help_ad) */
   $handler->display->display_options['filters']['field_gozulla_help_ad_value']['id'] = 'field_gozulla_help_ad_value';
   $handler->display->display_options['filters']['field_gozulla_help_ad_value']['table'] = 'field_data_field_gozulla_help_ad';
   $handler->display->display_options['filters']['field_gozulla_help_ad_value']['field'] = 'field_gozulla_help_ad_value';
@@ -750,7 +761,7 @@ function gozulla_deals_ads_views_default_views() {
   $handler->display->display_options['filters']['type']['table'] = 'node';
   $handler->display->display_options['filters']['type']['field'] = 'type';
   $handler->display->display_options['filters']['type']['value'] = array(
-    'gozulla_ad' => 'gozulla_ad',
+    'focusad' => 'focusad',
   );
   /* Filter criterion: Content: Has taxonomy term */
   $handler->display->display_options['filters']['tid']['id'] = 'tid';
@@ -760,8 +771,8 @@ function gozulla_deals_ads_views_default_views() {
     18 => '18',
   );
   $handler->display->display_options['filters']['tid']['type'] = 'select';
-  $handler->display->display_options['filters']['tid']['vocabulary'] = 'gozulla_sport';
-  /* Filter criterion: Content: gozulla help ad? (field_gozulla_help_ad) */
+  $handler->display->display_options['filters']['tid']['vocabulary'] = 'focus_sport';
+  /* Filter criterion: Content: Focus help ad? (field_gozulla_help_ad) */
   $handler->display->display_options['filters']['field_gozulla_help_ad_value']['id'] = 'field_gozulla_help_ad_value';
   $handler->display->display_options['filters']['field_gozulla_help_ad_value']['table'] = 'field_data_field_gozulla_help_ad';
   $handler->display->display_options['filters']['field_gozulla_help_ad_value']['field'] = 'field_gozulla_help_ad_value';
@@ -787,7 +798,7 @@ function gozulla_deals_ads_views_default_views() {
   $handler->display->display_options['filters']['type']['table'] = 'node';
   $handler->display->display_options['filters']['type']['field'] = 'type';
   $handler->display->display_options['filters']['type']['value'] = array(
-    'gozulla_ad' => 'gozulla_ad',
+    'focusad' => 'focusad',
   );
   /* Filter criterion: Content: Has taxonomy term */
   $handler->display->display_options['filters']['tid']['id'] = 'tid';
@@ -797,8 +808,8 @@ function gozulla_deals_ads_views_default_views() {
     19 => '19',
   );
   $handler->display->display_options['filters']['tid']['type'] = 'select';
-  $handler->display->display_options['filters']['tid']['vocabulary'] = 'gozulla_sport';
-  /* Filter criterion: Content: gozulla help ad? (field_gozulla_help_ad) */
+  $handler->display->display_options['filters']['tid']['vocabulary'] = 'focus_sport';
+  /* Filter criterion: Content: Focus help ad? (field_gozulla_help_ad) */
   $handler->display->display_options['filters']['field_gozulla_help_ad_value']['id'] = 'field_gozulla_help_ad_value';
   $handler->display->display_options['filters']['field_gozulla_help_ad_value']['table'] = 'field_data_field_gozulla_help_ad';
   $handler->display->display_options['filters']['field_gozulla_help_ad_value']['field'] = 'field_gozulla_help_ad_value';
@@ -824,7 +835,7 @@ function gozulla_deals_ads_views_default_views() {
   $handler->display->display_options['filters']['type']['table'] = 'node';
   $handler->display->display_options['filters']['type']['field'] = 'type';
   $handler->display->display_options['filters']['type']['value'] = array(
-    'gozulla_ad' => 'gozulla_ad',
+    'focusad' => 'focusad',
   );
   /* Filter criterion: Content: Has taxonomy term */
   $handler->display->display_options['filters']['tid']['id'] = 'tid';
@@ -834,8 +845,8 @@ function gozulla_deals_ads_views_default_views() {
     12 => '12',
   );
   $handler->display->display_options['filters']['tid']['type'] = 'select';
-  $handler->display->display_options['filters']['tid']['vocabulary'] = 'gozulla_sport';
-  /* Filter criterion: Content: gozulla help ad? (field_gozulla_help_ad) */
+  $handler->display->display_options['filters']['tid']['vocabulary'] = 'focus_sport';
+  /* Filter criterion: Content: Focus help ad? (field_gozulla_help_ad) */
   $handler->display->display_options['filters']['field_gozulla_help_ad_value']['id'] = 'field_gozulla_help_ad_value';
   $handler->display->display_options['filters']['field_gozulla_help_ad_value']['table'] = 'field_data_field_gozulla_help_ad';
   $handler->display->display_options['filters']['field_gozulla_help_ad_value']['field'] = 'field_gozulla_help_ad_value';
@@ -856,29 +867,6 @@ function gozulla_deals_ads_views_default_views() {
   $handler->display->display_options['sorts']['random']['id'] = 'random';
   $handler->display->display_options['sorts']['random']['table'] = 'views';
   $handler->display->display_options['sorts']['random']['field'] = 'random';
-  $handler->display->display_options['defaults']['filter_groups'] = FALSE;
-  $handler->display->display_options['defaults']['filters'] = FALSE;
-  /* Filter criterion: Content: Published */
-  $handler->display->display_options['filters']['status']['id'] = 'status';
-  $handler->display->display_options['filters']['status']['table'] = 'node';
-  $handler->display->display_options['filters']['status']['field'] = 'status';
-  $handler->display->display_options['filters']['status']['value'] = 1;
-  $handler->display->display_options['filters']['status']['group'] = 1;
-  $handler->display->display_options['filters']['status']['expose']['operator'] = FALSE;
-  /* Filter criterion: Content: Type */
-  $handler->display->display_options['filters']['type']['id'] = 'type';
-  $handler->display->display_options['filters']['type']['table'] = 'node';
-  $handler->display->display_options['filters']['type']['field'] = 'type';
-  $handler->display->display_options['filters']['type']['value'] = array(
-    'gozulla_ad' => 'gozulla_ad',
-  );
-  /* Filter criterion: Content: gozulla help ad? (field_gozulla_help_ad) */
-  $handler->display->display_options['filters']['field_gozulla_help_ad_value']['id'] = 'field_gozulla_help_ad_value';
-  $handler->display->display_options['filters']['field_gozulla_help_ad_value']['table'] = 'field_data_field_gozulla_help_ad';
-  $handler->display->display_options['filters']['field_gozulla_help_ad_value']['field'] = 'field_gozulla_help_ad_value';
-  $handler->display->display_options['filters']['field_gozulla_help_ad_value']['value'] = array(
-    1 => '1',
-  );
 
   /* Display: client ads */
   $handler = $view->new_display('block', 'client ads', 'client_ad');
@@ -890,37 +878,6 @@ function gozulla_deals_ads_views_default_views() {
   $handler->display->display_options['pager']['type'] = 'some';
   $handler->display->display_options['pager']['options']['items_per_page'] = '0';
   $handler->display->display_options['pager']['options']['offset'] = '0';
-  $handler->display->display_options['defaults']['fields'] = FALSE;
-  /* Field: Content: Sports */
-  $handler->display->display_options['fields']['field_gozulla_sport']['id'] = 'field_gozulla_sport';
-  $handler->display->display_options['fields']['field_gozulla_sport']['table'] = 'field_data_field_gozulla_sport';
-  $handler->display->display_options['fields']['field_gozulla_sport']['field'] = 'field_gozulla_sport';
-  $handler->display->display_options['fields']['field_gozulla_sport']['label'] = '';
-  $handler->display->display_options['fields']['field_gozulla_sport']['exclude'] = TRUE;
-  $handler->display->display_options['fields']['field_gozulla_sport']['element_label_colon'] = FALSE;
-  $handler->display->display_options['fields']['field_gozulla_sport']['delta_offset'] = '0';
-  /* Field: Content: deal link */
-  $handler->display->display_options['fields']['field_deal_link']['id'] = 'field_deal_link';
-  $handler->display->display_options['fields']['field_deal_link']['table'] = 'field_data_field_deal_link';
-  $handler->display->display_options['fields']['field_deal_link']['field'] = 'field_deal_link';
-  $handler->display->display_options['fields']['field_deal_link']['label'] = '';
-  $handler->display->display_options['fields']['field_deal_link']['exclude'] = TRUE;
-  $handler->display->display_options['fields']['field_deal_link']['element_label_colon'] = FALSE;
-  $handler->display->display_options['fields']['field_deal_link']['click_sort_column'] = 'url';
-  $handler->display->display_options['fields']['field_deal_link']['type'] = 'link_url';
-  /* Field: Content: ad image */
-  $handler->display->display_options['fields']['field_ad_image']['id'] = 'field_ad_image';
-  $handler->display->display_options['fields']['field_ad_image']['table'] = 'field_data_field_ad_image';
-  $handler->display->display_options['fields']['field_ad_image']['field'] = 'field_ad_image';
-  $handler->display->display_options['fields']['field_ad_image']['label'] = '';
-  $handler->display->display_options['fields']['field_ad_image']['alter']['make_link'] = TRUE;
-  $handler->display->display_options['fields']['field_ad_image']['alter']['path'] = '[field_deal_link]';
-  $handler->display->display_options['fields']['field_ad_image']['element_label_colon'] = FALSE;
-  $handler->display->display_options['fields']['field_ad_image']['click_sort_column'] = 'fid';
-  $handler->display->display_options['fields']['field_ad_image']['settings'] = array(
-    'image_style' => 'gozulla_ad',
-    'image_link' => '',
-  );
   $handler->display->display_options['defaults']['sorts'] = FALSE;
   /* Sort criterion: Content: Post date */
   $handler->display->display_options['sorts']['created']['id'] = 'created';
@@ -945,9 +902,9 @@ function gozulla_deals_ads_views_default_views() {
   $handler->display->display_options['filters']['type']['table'] = 'node';
   $handler->display->display_options['filters']['type']['field'] = 'type';
   $handler->display->display_options['filters']['type']['value'] = array(
-    'gozulla_ad' => 'gozulla_ad',
+    'focusad' => 'focusad',
   );
-  /* Filter criterion: Content: gozulla help ad? (field_gozulla_help_ad) */
+  /* Filter criterion: Content: Focus help ad? (field_gozulla_help_ad) */
   $handler->display->display_options['filters']['field_gozulla_help_ad_value']['id'] = 'field_gozulla_help_ad_value';
   $handler->display->display_options['filters']['field_gozulla_help_ad_value']['table'] = 'field_data_field_gozulla_help_ad';
   $handler->display->display_options['filters']['field_gozulla_help_ad_value']['field'] = 'field_gozulla_help_ad_value';

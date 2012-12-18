@@ -30,12 +30,36 @@ function gozulla_deals_ads_views_api() {
  */
 function gozulla_deals_ads_node_info() {
   $items = array(
-    'gozulla_ad' => array(
-      'name' => t('gozulla ad'),
+    'deal' => array(
+      'name' => t('Focus deal'),
+      'base' => 'node_content',
+      'description' => t('Use for adding shop "deals"'),
+      'has_title' => '1',
+      'title_label' => t('Name of deal'),
+      'help' => '',
+    ),
+    'focusad' => array(
+      'name' => t('Focus ad'),
       'base' => 'node_content',
       'description' => t('Use for adding ads'),
       'has_title' => '1',
       'title_label' => t('Ad title'),
+      'help' => '',
+    ),
+    'simpleads' => array(
+      'name' => t('Simple Ad'),
+      'base' => 'node_content',
+      'description' => t('Advertisement'),
+      'has_title' => '1',
+      'title_label' => t('Title'),
+      'help' => '',
+    ),
+    'simpleads_campaign' => array(
+      'name' => t('Simple Ad Campaign'),
+      'base' => 'node_content',
+      'description' => t('Advertisement Campaign'),
+      'has_title' => '1',
+      'title_label' => t('Title'),
       'help' => '',
     ),
   );
